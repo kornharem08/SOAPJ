@@ -1,182 +1,367 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
- 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+
 </head>
-  <body>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">Weather</a>
-          <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-              aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="collapsibleNavId">
-              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                  <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item dropdown "style="min-width: 40rem;">
-                      <a class="nav-link dropdown-toggle" href="#" width="100px"id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownId" >
-                          <!-- <a class="dropdown-item" href="#">Action 1</a>
+
+<body>
+<style>
+.card{
+margin-left: 10px;
+margin-top: 10px;}
+.rating-static {
+                width: 60px;
+                height: 16px;
+                display: block;
+                background: url('http://www.itsalif.info/blogfiles/rating/star-rating.png') 0 0 no-repeat;
+            }
+            .rating-50 {
+                background-position: 0 0;
+            }
+            .rating-40 {
+                background-position: -12px 0;
+            }
+            .rating-30 {
+                background-position: -24px 0;
+            }
+            .rating-20 {
+                background-position: -36px 0;
+            }
+            .rating-10 {
+                background-position: -48px 0;
+            }
+            .rating-0 {
+                background-position: -60px 0;
+            }
+            .rating-1 {
+                background-position: -48px -16px;
+            }
+            .rating-11 {
+                background-position: -36px -16px;
+            }
+            .rating-21 {
+                background-position: -24px -16px;
+            }
+            .rating-31 {
+                background-position: -12px -16px;
+            }
+            .rating-41 {
+                background-position: 0 -16px;
+            }
+            .rating-2 {
+                background-position: -48px -16px;
+            }
+            .rating-12 {
+                background-position: -36px -16px;
+            }
+            .rating-22 {
+                background-position: -24px -16px;
+            }
+            .rating-32 {
+                background-position: -12px -16px;
+            }
+            .rating-42 {
+                background-position: 0 -16px;
+            }
+            .rating-3 {
+                background-position: -48px -16px;
+            }
+            .rating-13 {
+                background-position: -36px -16px;
+            }
+            .rating-23 {
+                background-position: -24px -16px;
+            }
+            .rating-33 {
+                background-position: -12px -16px;
+            }
+            .rating-43 {
+                background-position: 0 -16px;
+            }
+            .rating-4 {
+                background-position: -48px -16px;
+            }
+            .rating-14 {
+                background-position: -36px -16px;
+            }
+            .rating-24 {
+                background-position: -24px -16px;
+            }
+            .rating-34 {
+                background-position: -12px -16px;
+            }
+            .rating-44 {
+                background-position: 0 -16px;
+            }
+            .rating-5 {
+                background-position: -48px -16px;
+            }
+            .rating-15 {
+                background-position: -36px -16px;
+            }
+            .rating-25 {
+                background-position: -24px -16px;
+            }
+            .rating-35 {
+                background-position: -12px -16px;
+            }
+            .rating-45 {
+                background-position: 0 -16px;
+            }
+            .rating-6 {
+                background-position: -48px -16px;
+            }
+            .rating-16 {
+                background-position: -36px -16px;
+            }
+            .rating-26 {
+                background-position: -24px -16px;
+            }
+            .rating-36 {
+                background-position: -12px -16px;
+            }
+            .rating-46 {
+                background-position: 0 -16px;
+            }
+            .rating-7 {
+                background-position: -48px -16px;
+            }
+            .rating-17 {
+                background-position: -36px -16px;
+            }
+            .rating-27 {
+                background-position: -24px -16px;
+            }
+            .rating-37 {
+                background-position: -12px -16px;
+            }
+            .rating-47 {
+                background-position: 0 -16px;
+            }
+            .rating-8 {
+                background-position: -48px -16px;
+            }
+            .rating-18 {
+                background-position: -36px -16px;
+            }
+            .rating-28 {
+                background-position: -24px -16px;
+            }
+            .rating-38 {
+                background-position: -12px -16px;
+            }
+            .rating-48 {
+                background-position: 0 -16px;
+            }
+            .rating-9 {
+                background-position: -48px -16px;
+            }
+            .rating-19 {
+                background-position: -36px -16px;
+            }
+            .rating-29 {
+                background-position: -24px -16px;
+            }
+            .rating-39 {
+                background-position: -12px -16px;
+            }
+            .rating-49 {
+                background-position: 0 -16px;
+
+
+}
+
+
+
+</style>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Weather</a>
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown " style="min-width: 40rem;">
+                    <a class="nav-link dropdown-toggle" href="#" width="100px" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <!-- <a class="dropdown-item" href="#">Action 1</a>
                           <a class="dropdown-item" href="#">Action 2</a> -->
-                          <div id = "dropdown" class="row" ></div>
-                      </div>
-                      
-                   
-                  </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                  <input id="city" class="form-control mr-sm-2" type="text" placeholder="Search">
-                  <button id="search" class="btn btn-outline-success my-2 my-sm-0"onclick="httpGet()" type="button">Search</button>
-                  <button id="search" class="btn btn-outline-success my-2 my-sm-0"onclick="tong('ENTERTAINMENT')" type="button">COMMUNICATION</button>
-              </form>
-            </nav>
-              <h1 id="selectedCity"></h1>
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Temperature( ํF)</th>
-                          <th>Humidity</th>
-                          <th>Weather</th>
-                      </tr>
-                  </thead>
-                  <tbody id="lekkla">
-                      
-                      
-                  </tbody>
-              </table>
-          
-            </div>
-     
+                        <div id="dropdown" class="row"></div>
+                    </div>
+
+
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input id="city" class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button id="search" class="btn btn-outline-success my-2 my-sm-0" onclick="httpGet()" type="button">Search</button>
+                <button id="search" class="btn btn-outline-success my-2 my-sm-0" onclick="tong('ENTERTAINMENT')" type="button">COMMUNICATION</button>
+            </form>
+    </nav>
+    <h1 id="selectedCity"></h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <!-- <th>Temperature( ํF)</th>
+                <th>Humidity</th>
+                <th>Weather</th> -->
+            </tr>
+        </thead>
+        <tbody id="lekkla"><div class="container">
+         <div class="row" id="row">  </div></div>
+        </tbody> 
+    </table>
+
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous">
-        </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-<script>
-    lekkla()
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <script>
+        lekkla()
 
-  function httpGet()
-{
+        function httpGet() {
 
-    var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://localhost:8080/store", true);
-xhr.onreadystatechange = function() {
-  if (xhr.readyState == 4) {
-    // innerText does not let the attacker inject HTML elements.
-    var tong = xhr.responseText;
-    var lekkla =JSON.parse(tong)
-    var html =''
-for(var i =0;i<lekkla.length;i++) {
-    html +='<tr>    <td >'+lekkla[i].app+'</td> <td >'+lekkla[i].type+'</td>  <td >'+lekkla[i].rating+'</td> </tr>'
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://localhost:8080/store", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    // innerText does not let the attacker inject HTML elements.
+                    var tong = xhr.responseText;
+                    var lekkla = JSON.parse(tong)
+                   var sort = lekkla.sort(dynamicSort("-installs"));
+                    var html = ''
+                    for (var i = 0; i < 10; i++) {
+                        
+                        html +='<br>'+
+                        ' <div class="card col-2"  >'+
+  '<img class="card-img-top" src="..." alt="Card image cap">'+
+  '<div class="card-body">'+
+    '<h6 class="card-title">'+sort[i].app+'</h6>'+
     
-    document.getElementById('lekkla').innerHTML=html;
-  // $('#lekkla').html(html)    
-}
-
-
-  
     
-  }
-}
-xhr.send();
+  '</div>'+'<hr>'+'<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
+'</div>'
+console.log(html);
 
+                        document.getElementById('row').innerHTML = html;
+                        // $('#lekkla').html(html)    
+                    }
+                }
+            }
+            xhr.send();
+        }
 
+        function tong(tong) {
+            console.log(tong);
 
-}
-function tong(tong)
-{console.log(tong);
+            var url = 'http://localhost:8080/store'
+            url += '/' + tong;
+            console.log(url);
 
-var url ='http://localhost:8080/store'
-    url +='/'+tong;
-    console.log(url);
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    // innerText does not let the attacker inject HTML elements.
+                    var tong = xhr.responseText;
+                    var lekkla = JSON.parse(tong)
+                    var sort = lekkla.sort(dynamicSort("-installs"));
+                    var html = ''
+                    for (var i = 0; i < sort.length; i++) {
+                        
+                        html +='<br>'+
+                        ' <div class="card col-2"  >'+
+  '<img class="card-img-top" src="..." alt="Card image cap">'+
+  '<div class="card-body">'+
+    '<h6 class="card-title">'+sort[i].app+'</h6>'+
     
-    var xhr = new XMLHttpRequest();
-xhr.open("GET", url, true);
-xhr.onreadystatechange = function() {
-  if (xhr.readyState == 4) {
-    // innerText does not let the attacker inject HTML elements.
-    var tong = xhr.responseText;
-    var lekkla =JSON.parse(tong)
-    var html =''
-for(var i =0;i<50;i++) {
-    html +='<tr>    <td >'+lekkla[i].app+'</td> <td >'+lekkla[i].type+'</td>  <td >'+lekkla[i].category+'</td> </tr>'
-    document.getElementById('lekkla').innerHTML=html;
-  // $('#lekkla').html(html)    
-}
-
-
-  
     
-  }
-}
-xhr.send();
+  '</div>'+'<hr>'+'<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
+'</div>'
+console.log(html);
+
+                        document.getElementById('row').innerHTML = html;
+                        // $('#lekkla').html(html)    
+                    }
+                }
+            }
+            xhr.send();
 
 
 
-}
-var data=[]
-function lekkla() {
-    var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://localhost:8080/store", true);
-xhr.onreadystatechange = function() {
-  if (xhr.readyState == 4) {
-    // innerText does not let the attacker inject HTML elements.
-    var tong = xhr.responseText;
-    var lekkla =JSON.parse(tong)
-    var html =''
-for(var i =0;i<lekkla.length;i++) {
-   
-   
-   data.push(lekkla[i].category)
-   //console.log(data); 
-    
-}
-check()
-
-  
-    
-  }
-}
-xhr.send();
+        }
+        var data = []
+        function lekkla() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://localhost:8080/store", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    // innerText does not let the attacker inject HTML elements.
+                    var tong = xhr.responseText;
+                    var lekkla = JSON.parse(tong)
+                    var html = ''
+                    for (var i = 0; i < lekkla.length; i++) {
+                        data.push(lekkla[i].category)
+                        //console.log(data); 
+                    }
+                    check()
+                }
+            }
+            xhr.send();
 
 
-}
-function check() {
+        }
+        function check() {
+            var sorted_arr = data.sort();
+            var results = [];
+            for (var i = 0; i < data.length; i++) {
+                if (sorted_arr[i + 1] == sorted_arr[i]) {
+                } else {
+                    results.push(sorted_arr[i]);
+                    console.log(sorted_arr[i]);
+                    // console.log(results);
+                    var dropdown = '<div class="col-6">' + "<a class='dropdown-item' onclick='tong(" + '"' + sorted_arr[i] + '"' + ")'>" + sorted_arr[i] + '</a></div>'
+                    document.getElementById('dropdown').innerHTML += dropdown;
+                }
+            }
+        }
 
-    var sorted_arr = data.sort();
-    var results = [];
-for (var i = 0; i < data.length; i++) {
-    if (sorted_arr[i + 1] == sorted_arr[i]) {
-       
-
-    }else{ 
-        results.push(sorted_arr[i]);
-        console.log(sorted_arr[i]);
-// console.log(results);
- var dropdown ='<div class="col-6">'+"<a class='dropdown-item' onclick='tong("+'"'+sorted_arr[i]+'"'+")'>"+sorted_arr[i]+'</a></div>'
-document.getElementById('dropdown').innerHTML+=dropdown;
-}
-
-
+        function dynamicSort(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
     }
-   
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
 }
-</script>  
+    </script>
 </body>
+
 </html>
