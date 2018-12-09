@@ -10,186 +10,246 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 </head>
 
 <body>
-<style>
-.card{
-margin-left: 10px;
-margin-top: 10px;}
-.rating-static {
-                width: 60px;
-                height: 16px;
-                display: block;
-                background: url('http://www.itsalif.info/blogfiles/rating/star-rating.png') 0 0 no-repeat;
-            }
-            .rating-50 {
-                background-position: 0 0;
-            }
-            .rating-40 {
-                background-position: -12px 0;
-            }
-            .rating-30 {
-                background-position: -24px 0;
-            }
-            .rating-20 {
-                background-position: -36px 0;
-            }
-            .rating-10 {
-                background-position: -48px 0;
-            }
-            .rating-0 {
-                background-position: -60px 0;
-            }
-            .rating-1 {
-                background-position: -48px -16px;
-            }
-            .rating-11 {
-                background-position: -36px -16px;
-            }
-            .rating-21 {
-                background-position: -24px -16px;
-            }
-            .rating-31 {
-                background-position: -12px -16px;
-            }
-            .rating-41 {
-                background-position: 0 -16px;
-            }
-            .rating-2 {
-                background-position: -48px -16px;
-            }
-            .rating-12 {
-                background-position: -36px -16px;
-            }
-            .rating-22 {
-                background-position: -24px -16px;
-            }
-            .rating-32 {
-                background-position: -12px -16px;
-            }
-            .rating-42 {
-                background-position: 0 -16px;
-            }
-            .rating-3 {
-                background-position: -48px -16px;
-            }
-            .rating-13 {
-                background-position: -36px -16px;
-            }
-            .rating-23 {
-                background-position: -24px -16px;
-            }
-            .rating-33 {
-                background-position: -12px -16px;
-            }
-            .rating-43 {
-                background-position: 0 -16px;
-            }
-            .rating-4 {
-                background-position: -48px -16px;
-            }
-            .rating-14 {
-                background-position: -36px -16px;
-            }
-            .rating-24 {
-                background-position: -24px -16px;
-            }
-            .rating-34 {
-                background-position: -12px -16px;
-            }
-            .rating-44 {
-                background-position: 0 -16px;
-            }
-            .rating-5 {
-                background-position: -48px -16px;
-            }
-            .rating-15 {
-                background-position: -36px -16px;
-            }
-            .rating-25 {
-                background-position: -24px -16px;
-            }
-            .rating-35 {
-                background-position: -12px -16px;
-            }
-            .rating-45 {
-                background-position: 0 -16px;
-            }
-            .rating-6 {
-                background-position: -48px -16px;
-            }
-            .rating-16 {
-                background-position: -36px -16px;
-            }
-            .rating-26 {
-                background-position: -24px -16px;
-            }
-            .rating-36 {
-                background-position: -12px -16px;
-            }
-            .rating-46 {
-                background-position: 0 -16px;
-            }
-            .rating-7 {
-                background-position: -48px -16px;
-            }
-            .rating-17 {
-                background-position: -36px -16px;
-            }
-            .rating-27 {
-                background-position: -24px -16px;
-            }
-            .rating-37 {
-                background-position: -12px -16px;
-            }
-            .rating-47 {
-                background-position: 0 -16px;
-            }
-            .rating-8 {
-                background-position: -48px -16px;
-            }
-            .rating-18 {
-                background-position: -36px -16px;
-            }
-            .rating-28 {
-                background-position: -24px -16px;
-            }
-            .rating-38 {
-                background-position: -12px -16px;
-            }
-            .rating-48 {
-                background-position: 0 -16px;
-            }
-            .rating-9 {
-                background-position: -48px -16px;
-            }
-            .rating-19 {
-                background-position: -36px -16px;
-            }
-            .rating-29 {
-                background-position: -24px -16px;
-            }
-            .rating-39 {
-                background-position: -12px -16px;
-            }
-            .rating-49 {
-                background-position: 0 -16px;
+    <style>
+        .card {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        .rating-static {
+            width: 60px;
+            height: 16px;
+            display: block;
+            background: url('http://www.itsalif.info/blogfiles/rating/star-rating.png') 0 0 no-repeat;
+        }
+
+        .rating-50 {
+            background-position: 0 0;
+        }
+
+        .rating-40 {
+            background-position: -12px 0;
+        }
+
+        .rating-30 {
+            background-position: -24px 0;
+        }
+
+        .rating-20 {
+            background-position: -36px 0;
+        }
+
+        .rating-10 {
+            background-position: -48px 0;
+        }
+
+        .rating-0 {
+            background-position: -60px 0;
+        }
+
+        .rating-1 {
+            background-position: -48px -16px;
+        }
+
+        .rating-11 {
+            background-position: -36px -16px;
+        }
+
+        .rating-21 {
+            background-position: -24px -16px;
+        }
+
+        .rating-31 {
+            background-position: -12px -16px;
+        }
+
+        .rating-41 {
+            background-position: 0 -16px;
+        }
+
+        .rating-2 {
+            background-position: -48px -16px;
+        }
+
+        .rating-12 {
+            background-position: -36px -16px;
+        }
+
+        .rating-22 {
+            background-position: -24px -16px;
+        }
+
+        .rating-32 {
+            background-position: -12px -16px;
+        }
+
+        .rating-42 {
+            background-position: 0 -16px;
+        }
+
+        .rating-3 {
+            background-position: -48px -16px;
+        }
+
+        .rating-13 {
+            background-position: -36px -16px;
+        }
+
+        .rating-23 {
+            background-position: -24px -16px;
+        }
+
+        .rating-33 {
+            background-position: -12px -16px;
+        }
+
+        .rating-43 {
+            background-position: 0 -16px;
+        }
+
+        .rating-4 {
+            background-position: -48px -16px;
+        }
+
+        .rating-14 {
+            background-position: -36px -16px;
+        }
+
+        .rating-24 {
+            background-position: -24px -16px;
+        }
+
+        .rating-34 {
+            background-position: -12px -16px;
+        }
+
+        .rating-44 {
+            background-position: 0 -16px;
+        }
+
+        .rating-5 {
+            background-position: -48px -16px;
+        }
+
+        .rating-15 {
+            background-position: -36px -16px;
+        }
+
+        .rating-25 {
+            background-position: -24px -16px;
+        }
+
+        .rating-35 {
+            background-position: -12px -16px;
+        }
+
+        .rating-45 {
+            background-position: 0 -16px;
+        }
+
+        .rating-6 {
+            background-position: -48px -16px;
+        }
+
+        .rating-16 {
+            background-position: -36px -16px;
+        }
+
+        .rating-26 {
+            background-position: -24px -16px;
+        }
+
+        .rating-36 {
+            background-position: -12px -16px;
+        }
+
+        .rating-46 {
+            background-position: 0 -16px;
+        }
+
+        .rating-7 {
+            background-position: -48px -16px;
+        }
+
+        .rating-17 {
+            background-position: -36px -16px;
+        }
+
+        .rating-27 {
+            background-position: -24px -16px;
+        }
+
+        .rating-37 {
+            background-position: -12px -16px;
+        }
+
+        .rating-47 {
+            background-position: 0 -16px;
+        }
+
+        .rating-8 {
+            background-position: -48px -16px;
+        }
+
+        .rating-18 {
+            background-position: -36px -16px;
+        }
+
+        .rating-28 {
+            background-position: -24px -16px;
+        }
+
+        .rating-38 {
+            background-position: -12px -16px;
+        }
+
+        .rating-48 {
+            background-position: 0 -16px;
+        }
+
+        .rating-9 {
+            background-position: -48px -16px;
+        }
+
+        .rating-19 {
+            background-position: -36px -16px;
+        }
+
+        .rating-29 {
+            background-position: -24px -16px;
+        }
+
+        .rating-39 {
+            background-position: -12px -16px;
+        }
+
+        .rating-49 {
+            background-position: 0 -16px;
 
 
-}
+        }
 
+        .card-title {
+            text-overflow: ellipsis;
 
-
-</style>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            /* Required for text-overflow to do anything */
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    </style>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#">Weather</a>
         <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <!-- <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home
@@ -204,31 +264,59 @@ margin-top: 10px;}
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
                         <!-- <a class="dropdown-item" href="#">Action 1</a>
                           <a class="dropdown-item" href="#">Action 2</a> -->
-                        <div id="dropdown" class="row"></div>
-                    </div>
+                        <!-- <div id="dropdown" class="row"></div>
+                    </div> 
 
 
                 </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input id="city" class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button id="search" class="btn btn-outline-success my-2 my-sm-0" onclick="httpGet()" type="button">Search</button>
-                <button id="search" class="btn btn-outline-success my-2 my-sm-0" onclick="tong('ENTERTAINMENT')" type="button">COMMUNICATION</button>
-            </form>
+            </ul> -->
+         
     </nav>
-    <h1 id="selectedCity"></h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <!-- <th>Temperature( ํF)</th>
+
+    <div class="container-fluid" style="margin-top:80px">
+        <div class="row ">
+            <div class="col-2 ">
+                <ul>
+                    <li>
+                        <button id="search" class="btn btn-outline-success my-2 my-sm-0" onclick="tong('ENTERTAINMENT')" type="button">COMMUNICATION</button>
+                        
+                    </li>
+                   
+                </ul>
+            
+      </div>
+        
+            <div class="col-10 " style="margin-left:15%;padding:1px 16px;height:1000px;">
+   <form class="form-inline my-2 my-lg-0" >
+                <center><input id="city" class="form-control  " type="text" placeholder="Search" onchange="serach(this.value)" width="20px">
+                <button id="search" class="btn btn-outline-success my-2 my-sm-0" onclick="httpGet()" type="button">Search</button></center>
+                
+            </form>
+                
+                    <h1 id="selectedCity"></h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <!-- <th>Temperature( ํF)</th>
                 <th>Humidity</th>
                 <th>Weather</th> -->
-            </tr>
-        </thead>
-        <tbody id="lekkla"><div class="container">
-         <div class="row" id="row">  </div></div>
-        </tbody> 
-    </table>
+                            </tr>
+                        </thead>
+                        <tbody id="lekkla">
+                            <div class="container">
+                                <div class="row" id="row"> </div>
+                            </div>
+                        </tbody>
+                    </table>
+                
+
+
+            </div>
+        </div>
+    </div>
+
+
+
 
     </div>
 
@@ -240,6 +328,38 @@ margin-top: 10px;}
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <style>
+            
+            
+                ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    width: 15%;
+                    background-color: #f1f1f1;
+                    position: fixed;
+                    height: 100%;
+                    overflow: auto;
+                }
+                
+                li a {
+                    display: block;
+                    color: #000;
+                    padding: 8px 16px;
+                    text-decoration: none;
+                }
+                
+                li a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+                
+                li a:hover:not(.active) {
+                    background-color: #555;
+                    color: white;
+                }
+                </style>
     <script>
         lekkla()
 
@@ -252,20 +372,20 @@ margin-top: 10px;}
                     // innerText does not let the attacker inject HTML elements.
                     var tong = xhr.responseText;
                     var lekkla = JSON.parse(tong)
-                   var sort = lekkla.sort(dynamicSort("-installs"));
+                    var sort = lekkla.sort(dynamicSort("-installs"));
                     var html = ''
                     for (var i = 0; i < 10; i++) {
-                        
-                        html +='<br>'+
-                        ' <div class="card col-2"  >'+
-  '<img class="card-img-top" src="..." alt="Card image cap">'+
-  '<div class="card-body">'+
-    '<h6 class="card-title">'+sort[i].app+'</h6>'+
-    
-    
-  '</div>'+'<hr>'+'<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
-'</div>'
-console.log(html);
+
+                        html += '<br>' +
+                            ' <div class="card col-2"  >' +
+                            '<img class="card-img-top" src="..." alt="Card image cap">' +
+                            '<div class="card-body">' +
+                            '<h6 class="card-title">' + sort[i].app + '</h6>' +
+
+
+                            '</div>' + '<hr>' + '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                            '</div>'
+                        console.log(html);
 
                         document.getElementById('row').innerHTML = html;
                         // $('#lekkla').html(html)    
@@ -284,6 +404,7 @@ console.log(html);
 
             var xhr = new XMLHttpRequest();
             xhr.open("GET", url, true);
+   
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4) {
                     // innerText does not let the attacker inject HTML elements.
@@ -292,17 +413,15 @@ console.log(html);
                     var sort = lekkla.sort(dynamicSort("-installs"));
                     var html = ''
                     for (var i = 0; i < sort.length; i++) {
-                        
-                        html +='<br>'+
-                        ' <div class="card col-2"  >'+
-  '<img class="card-img-top" src="..." alt="Card image cap">'+
-  '<div class="card-body">'+
-    '<h6 class="card-title">'+sort[i].app+'</h6>'+
-    
-    
-  '</div>'+'<hr>'+'<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
-'</div>'
-console.log(html);
+
+                        html += '<br>' +
+                            ' <div class="card col-2"  >' + '<br>' +
+                            '<img class="card-img-top" src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t1.0-9/45207280_399898607507177_2919563036601614336_n.jpg?_nc_cat=103&_nc_ht=scontent.fbkk10-1.fna&oh=7be03e08365669e2fbb8e97b1d36159a&oe=5CAB7B82" alt="Card image cap">' +
+                            '<div class="card-body">' +
+                            '<h6 class="card-title">' + sort[i].app + '</h6>' +
+                            '</div>' + '<hr>' + '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                            '</div>'
+                        console.log(html);
 
                         document.getElementById('row').innerHTML = html;
                         // $('#lekkla').html(html)    
@@ -315,6 +434,7 @@ console.log(html);
 
         }
         var data = []
+        var allapp = ''
         function lekkla() {
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "http://localhost:8080/store", true);
@@ -323,9 +443,13 @@ console.log(html);
                     // innerText does not let the attacker inject HTML elements.
                     var tong = xhr.responseText;
                     var lekkla = JSON.parse(tong)
+                    allapp = lekkla
+
+
                     var html = ''
                     for (var i = 0; i < lekkla.length; i++) {
                         data.push(lekkla[i].category)
+
                         //console.log(data); 
                     }
                     check()
@@ -351,16 +475,52 @@ console.log(html);
         }
 
         function dynamicSort(property) {
-    var sortOrder = 1;
-    if(property[0] === "-") {
-        sortOrder = -1;
-        property = property.substr(1);
-    }
-    return function (a,b) {
-        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-        return result * sortOrder;
-    }
-}
+            var sortOrder = 1;
+            if (property[0] === "-") {
+                sortOrder = -1;
+                property = property.substr(1);
+            }
+            return function (a, b) {
+                var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+                return result * sortOrder;
+            }
+        }
+
+        function serach(search) {
+            console.log(search);
+
+            const filterItems = (needle, heystack) => {
+                let query = needle.toLowerCase();
+                return heystack.filter(item => item.app.toLowerCase().indexOf(needle) >= 0);
+            }
+            console.log("55+", filterItems(search, allapp));
+            var searchs = filterItems(search.toLowerCase(), allapp);
+            showsearch(searchs)
+            // localStorage.setItem('title', item);
+        }
+
+        function showsearch(app) {
+            var sort = app.sort(dynamicSort("-installs"));
+            var html = ''
+            for (var i = 0; i < app.length; i++) {
+                if (i < 20) {
+                    html += '<br>' +
+                        ' <div class="card col-2"  >' + '<br>' +
+                        '<img class="card-img-top" src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t1.0-9/45207280_399898607507177_2919563036601614336_n.jpg?_nc_cat=103&_nc_ht=scontent.fbkk10-1.fna&oh=7be03e08365669e2fbb8e97b1d36159a&oe=5CAB7B82" alt="Card image cap">' +
+                        '<div class="card-body">' +
+                        '<h6 class="card-title">' + sort[i].app + '</h6>' +
+                        '</div>' + '<hr>' + '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                        '</div>'
+
+
+                    document.getElementById('row').innerHTML = html;
+                }
+                // $('#lekkla').html(html)    
+            }
+
+        }
+
+
     </script>
 </body>
 
