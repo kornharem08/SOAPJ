@@ -148,15 +148,17 @@ function tong(tong) {
                     
                     '<h4 class="card-title mt-3">'+ sort[i].app +'</h4>'+
                     '<div class="meta">'+
-                        '<h5>' + sort[i].category + '</h5>'+
+                        '<h6>' + sort[i].category + '</h6>'+
                        
                     '</div>'+
                     
                 '</div>'+
                
                 '<hr>'+
+               '<div class="row">'+
                 '<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
-              
+                '<div class="type">'+sort[i].type+'</div>'+
+                '</div>'+
                     '<br>'+
                     
                 '</div>'+
