@@ -354,3 +354,63 @@ all()
 function all2() {
     all()
 }
+
+function rating(app) {
+ console.log(app);
+ 
+ var url = 'http://localhost:8080/store'
+  
+ console.log(url);
+
+ var xhr = new XMLHttpRequest();
+ xhr.open("GET", url, true);
+
+ xhr.onreadystatechange = function () {
+     if (xhr.readyState == 4) {
+         var tong = xhr.responseText;
+         var lekkla = JSON.parse(tong)
+        
+         var sort =  lekkla.sort(function(a, b){return b - a});
+         var html = '';
+
+         for (var i = 0; i < sort.length; i++) {
+var a= parseInt(sort[i].rating)
+if(app==a){
+
+             html +=
+             '<div class="card col-2" id="card">'+
+             '<img class="card-img-top" src="https://picsum.photos/200/300?image='+i+'">'+
+             '<div class="card-block">'+
+                 
+                 '<h4 class="card-title mt-3">'+ sort[i].app +'</h4>'+
+                 '<div class="meta">'+
+                     '<h6>' + sort[i].category + '</h6>'+
+                    
+                 '</div>'+
+                 
+             '</div>'+
+            
+             '<hr>'+
+            '<div class="row">'+
+             '<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
+             '<div class="type">'+sort[i].type+'</div>'+
+             '</div>'+
+                 '<br>'+
+                 
+             '</div>'+
+         '</div>';
+         } 
+             
+}console.log(html);
+         document.getElementById('wrapper').innerHTML = html;
+         page()
+        
+
+
+
+
+     }
+ }
+ xhr.send();
+ 
+}

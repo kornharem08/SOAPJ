@@ -423,11 +423,11 @@ h4 {
     margin-left: 170px;
 }
 .searchbar{
-    margin-bottom: auto;
-    margin-top: 10px;
-    height: 50px;
+    
+  
+    height: 40px;
     background-color: #1b1a1a;
-    border-radius: 30px;
+    border-radius: 20px;
     padding: 10px;
     }
 
@@ -437,7 +437,7 @@ h4 {
     outline: 0;
     background: none;
     width: 0;
-    line-height: 15px;
+    line-height: 20px;
     transition: width 0.4s linear;
     }
 
@@ -453,12 +453,51 @@ h4 {
     }
 
     .search_icon{
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
     float: right;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     color:white;
+    }
+
+
+    .rating1 {
+        
+     
+        font-size: 20px;
+        overflow:hidden;
+    }
+.rating1 input {
+float: right;
+opacity: 0;
+position: absolute;
+}
+    .rating1 a,
+.rating1 label {
+        float:right;
+        color: rgb(119, 118, 118);
+        text-decoration: none;
+        -webkit-transition: color .4s;
+        -moz-transition: color .4s;
+        -o-transition: color .4s;
+        transition: color .4s;
+    }
+.rating1 label:hover ~ label,
+.rating1 input:focus ~ label,
+.rating1 label:hover,
+    .rating1 a:hover,
+    .rating1 a:hover ~ a,
+    .rating1 a:focus,
+    .rating1 a:focus ~ a		{
+        color: rgb(249, 250, 250);
+        cursor: pointer;
+    }
+    .rating2 {
+        direction: rtl;
+    }
+    .rating2 a {
+        float:none
     }
