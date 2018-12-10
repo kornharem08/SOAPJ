@@ -1,5 +1,5 @@
 
-  
+  lekkla() 
   function UserAction(name) {
     console.log(name);
 
@@ -116,7 +116,7 @@ function check() {
             results.push(sorted_arr[i]);
             console.log(sorted_arr[i]);
             // console.log(results);
-            var dropdown = '<div class="col-6">' + "<a class='dropdown-item' onclick='tong(" + '"' + sorted_arr[i] + '"' + ")'>" + sorted_arr[i] + '</a></div>'
+            var dropdown = '<div class="col-2" style="color:white ">' + "<a class='dropdown-item' onclick='tong(" + '"' + sorted_arr[i] + '"' + ")'>" + sorted_arr[i] + '</a></div>'
             document.getElementById('dropdown').innerHTML += dropdown;
         }
     }
@@ -142,7 +142,7 @@ function tong(tong) {
             for (var i = 0; i < sort.length; i++) {
                 console.log(sort[i].app);
                 html +=
-                '<div class="card col-3" id="card">'+
+                '<div class="card col-2" id="card">'+
                 '<img class="card-img-top" src="https://picsum.photos/200/300?image='+i+'">'+
                 '<div class="card-block">'+
                     
@@ -153,13 +153,12 @@ function tong(tong) {
                     '</div>'+
                     
                 '</div>'+
-                '<div class="card-footer">'+
-                   
-                    '<div class="icon pull-right">'+
-                       '<a href="#"><i class="fa fa-envelope fa-fw fa-2x" aria-hidden="true"></i></a>'+
-                        '<a href="#"><i class="fa fa-ban fa-2x" aria-hidden="true"></i></a>'+
-    
-                    '</div>'+
+               
+                '<hr>'+
+                '<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
+              
+                    '<br>'+
+                    
                 '</div>'+
             '</div>';
             } 
@@ -177,7 +176,7 @@ function tong(tong) {
     xhr.send();
 }
 function page(){
-    var _elPerPage = 8;//We are going to use this later to set the number of elements to display per page
+    var _elPerPage = 10;//We are going to use this later to set the number of elements to display per page
             var number_of_pages = Math.ceil($('card').length / _elPerPage); //This is used just for this demo to calculate the number of pages
             function stats(){//This is used just for this demo to display the current settings
               if($('#elPerPage').val() > 0)
@@ -247,5 +246,30 @@ function httpGet() {
     }
     xhr.send();
 }
+
+$(document).ready(function() {
+    // executes when HTML-Document is loaded and DOM is ready
+   
+   // breakpoint and up  
+   $(window).resize(function(){
+       if ($(window).width() >= 980){	
+   
+         // when you hover a toggle show its dropdown menu
+         $(".navbar .dropdown-toggle").hover(function () {
+            $(this).parent().toggleClass("show");
+            $(this).parent().find(".dropdown-menu").toggleClass("show"); 
+          });
+   
+           // hide the menu when the mouse leaves the dropdown
+         $( ".navbar .dropdown-menu" ).mouseleave(function() {
+           $(this).removeClass("show");  
+         });
+     
+           // do something here
+       }	
+   });  
+     
+   // document ready  
+   });
 
 
