@@ -68,17 +68,32 @@ function showsearch(app) {
     var sort = app.sort(dynamicSort("-installs"));
     var html = ''
     for (var i = 0; i < app.length; i++) {
-        if (i < 20) {
-            html += '<br>' +
-                ' <div class="card col-2">' + '<br>' +
-                '<img class="card-img-top" src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t1.0-9/45207280_399898607507177_2919563036601614336_n.jpg?_nc_cat=103&_nc_ht=scontent.fbkk10-1.fna&oh=7be03e08365669e2fbb8e97b1d36159a&oe=5CAB7B82" alt="Card image cap">' +
-                '<div class="card-body">' +
-                '<h6 class="card-title">' + sort[i].app + '</h6>' +
-                '</div>' + '<hr>' + '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
-                '</div>'
-            document.getElementById('row').innerHTML = html;
-        }
-    }
+       
+            html +=
+            '<div class="card col-2" id="card">'+
+            '<img class="card-img-top" src="https://picsum.photos/200/300?image='+i+'">'+
+            '<div class="card-block">'+
+                
+                '<h4 class="card-title mt-3">'+ sort[i].app +'</h4>'+
+                '<div class="meta">'+
+                    '<h6>' + sort[i].category + '</h6>'+
+                   
+                '</div>'+
+                
+            '</div>'+
+           
+            '<hr>'+
+           '<div class="row">'+
+            '<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
+            '<div class="type">'+sort[i].type+'</div>'+
+            '</div>'+
+                '<br>'+
+                
+            '</div>'+
+        '</div>';
+            document.getElementById('wrapper').innerHTML = html;
+       
+    } page()
 }
 
 function serach(search) {
