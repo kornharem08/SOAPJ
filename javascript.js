@@ -1,10 +1,12 @@
 
   lekkla() 
+
+  
   function UserAction(name) {
     console.log(name);
-
+    var res = encodeURI(name);
     var xhr = new XMLHttpRequest();
-    var url = 'http://localhost:8080/countries'
+    var url = 'http://localhost:8080/countries/'+res
 
     console.log(url);
     xhr.open("GET", url, true);
@@ -16,8 +18,8 @@
             var jrresult = JSON.parse(result);
             var table = '';
             for (var i = 0; i < jrresult.length; i++) {
-
-                if (jrresult[i].app === "Disney Heroes: Battle Mode") {
+                var ex = encodeURI(jrresult[i].app);
+                if (ex === res) {
                     console.log(jrresult[i].app, name);
                     var z = jrresult[i].app;
                     var a = Number(jrresult[i].sentimentSubjectivity).toFixed(2);
@@ -51,7 +53,7 @@
                         '</div>' +
                         '</div>' +
                         '</div>';
-                    document.getElementById("resp").innerHTML = table;
+                    document.getElementById("usereview").innerHTML = table;
                 }
             }
 
@@ -139,9 +141,16 @@ function check() {
 
 function tong(tong) {
     console.log(tong);
+ var type =  '<div class="dropdown open"  style ="margin-left:95px">'+
+ '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >'+'Type'+'</button>'+
 
-    var url = 'http://localhost:8080/store'
-    url += '/' + tong;
+' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >'+
+ "<a  class='dropdown-item' onclick='Free(" + '"' + tong + '"' + ","+'"Free"'+")'>"+"Free"+"</a>"+"<br>"+"<a class='dropdown-item' onclick='Free(" + '"' + tong + '"' + ","+'"Paid"'+")'>"+"Paid"+"</a>"+"<br>"+"<a class='dropdown-item' onclick='tong(" + '"' + tong + '"' + ")'>"+"All"+"</a>"+
+ '</div>'+
+ '</div>';
+ document.getElementById('type').innerHTML = type;
+    var url = 'http://localhost:8080/store/'+ tong;
+ 
     console.log(url);
 
     var xhr = new XMLHttpRequest();
@@ -152,7 +161,8 @@ function tong(tong) {
             var tong = xhr.responseText;
             var lekkla = JSON.parse(tong)
             var sort = lekkla.sort(dynamicSort("-installs"));
-            var html = '';
+            var html=''
+console.log(html);
 
             for (var i = 0; i < sort.length; i++) {
                 console.log(sort[i].app);
@@ -160,7 +170,7 @@ function tong(tong) {
               
                 var a = parseInt(b);
                 html +=
-                '<div class="card col-2" id="card">'+
+                "<div class='card col-2' id='card'>" +
                 '<img class="card-img-top" src="https://picsum.photos/200/300?image='+i+'">'+
                 '<div class="card-block">'+
                     
@@ -177,6 +187,9 @@ function tong(tong) {
                 '<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
                 '<div class="type">'+sort[i].type+'</div>'+
                 '</div>'+
+                "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + ")'>Large modal</button>"+
+
+            
                     '<br>'+
                     
                 '</div>'+
@@ -413,4 +426,144 @@ if(app==a){
  }
  xhr.send();
  
+}
+
+function Free(c,t) {
+    console.log(tong);
+ var type = '<div class="dropdown open"  style ="margin-left:95px">'+
+ '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >'+'Type'+'</button>'+
+
+' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >'+
+ "<a  class='dropdown-item' onclick='Free(" + '"' + c + '"' + ","+'"Free"'+")'>"+"Free"+"</a>"+"<br>"+"<a class='dropdown-item' onclick='Free(" + '"' + c + '"' + ","+'"Paid"'+")'>"+"Paid"+"</a>"+"<br>"+"<a class='dropdown-item' onclick='tong(" + '"' + c + '"' + ")'>"+"All"+"</a>"+
+ '</div>'+
+ '</div>'
+ console.log(type)
+ document.getElementById('type').innerHTML = type;
+ var url = 'http://localhost:8080/store/'+c+"/"+t;
+ 
+    console.log(url);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            var tong = xhr.responseText;
+            var lekkla = JSON.parse(tong)
+            var sort = lekkla.sort(dynamicSort("-installs"));
+       var html ='';    
+console.log(html);
+
+            for (var i = 0; i < sort.length; i++) {
+                console.log(sort[i].app);
+                var b=sort[i].installs
+              
+                var a = parseInt(b);
+                html +=
+                '<div class="card col-2" id="card">'+
+                '<img class="card-img-top" src="https://picsum.photos/200/300?image='+i+'">'+
+                '<div class="card-block">'+
+                    
+                    '<h4 class="card-title mt-3">'+ sort[i].app +'</h4>'+
+                    '<div class="meta">'+
+                        '<h6>' + sort[i].category + '</h6>'+
+                       
+                    '</div>'+
+                    
+                '</div>'+
+               
+                '<hr>'+
+               '<div class="row">'+
+                '<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
+                '<div class="type">'+sort[i].type+'</div>'+
+                '</div>'+
+                    '<br>'+
+                    
+                '</div>'+
+            '</div>';
+            } 
+
+           
+
+
+
+
+                console.log(html);
+            document.getElementById('wrapper').innerHTML = html;
+            page()
+        }
+    }
+    xhr.send();
+}
+
+
+function herff(name){
+    window.location.href= 'userreview.html' ;
+    localStorage.setItem("name",name);
+}
+
+
+function userrv(name){
+alert(name)
+    var res = encodeURI(name);
+    var xhr = new XMLHttpRequest();
+    var url = 'http://localhost:8080/countries/'+res
+
+    console.log(url);
+    xhr.open("GET", url, true);
+
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            var result = xhr.responseText;
+            var jrresult = JSON.parse(result);
+            var table = ''
+            ;
+
+            for (var i = 0; i < jrresult.length; i++) {
+                var ex = encodeURI(jrresult[i].app);
+                if (ex === res) {
+                    console.log(jrresult[i].app, name);
+                    var z = jrresult[i].app;
+                    var a = Number(jrresult[i].sentimentSubjectivity).toFixed(2);
+                    var b = Number(jrresult[i].sentimentPolarity).toFixed(2);
+                    table +=
+
+                        '<div class="card">' +
+                        '<div class="card-body">' +
+                        '<div class="row">' +
+                        '<div class="col-md-2">' +
+                        '<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>' +
+                        '<p class="text-secondary text-center">15 Minutes Ago</p>' +
+                        '</div>' +
+                        '<div class="col-md-10">' +
+                        '<p>' +
+                        '<a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Maniruzzaman Akash</strong></a>' +
+                        '<span class="float-right"><i class="text-warning fa fa-star"></i></span>' +
+                        '<span class="float-right"><i class="text-warning fa fa-star"></i></span>' +
+                        '<span class="float-right"><i class="text-warning fa fa-star"></i></span>' +
+                        '<span class="float-right"><i class="text-warning fa fa-star"></i></span>' +
+                        '</p>' +
+                        '<div class="clearfix"></div>' +
+                        '<p>' + jrresult[i].translatedReview + '</p>' +
+                        '<br>' +
+                        '<p>' + z + '</p>' +
+                        '<p>' +
+                        '<a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>' +
+                        '<a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>' +
+                        '</p>' +
+
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                        console.log(table);
+                        
+                    document.getElementById("usereview").innerHTML = table;
+                }
+            }
+            
+        }
+    }
+    xhr.send();
 }
