@@ -1,3 +1,6 @@
+*{
+    font-family: "Times New Roman", Times, serif;
+}
 .card-title {
     text-overflow: ellipsis;
     /* Required for text-overflow to do anything */
@@ -330,7 +333,7 @@ h4 {
 
 .meta {
     font-size: 1em;
-    color: rgba(0, 0, 0, .4);
+    color: rgba(0, 0, 0, 0.685);
 }
 .profile_budget{
     padding-top:15px;
@@ -416,9 +419,7 @@ h4 {
    }
    .dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover{background-color: rgba(58, 55, 55, 0.815)!important;}
 }
-*{
-    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-}
+
 .type{
     color: #ef6645;
     margin-left: 170px;
@@ -502,3 +503,42 @@ position: absolute;
     .rating2 a {
         float:none
     }
+
+    .card:hover {
+        cursor:pointer;
+         /* -webkit-box-shadow: inset 1px -71px 300px 116px rgba(0,0,0,0.14);
+        -moz-box-shadow: inset 1px -71px 300px 116px rgba(0,0,0,0.14); */
+        /* box-shadow: inset 1px -71px 300px 116px rgba(0,0,0,0.14); */
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.432);
+        }
+        .content {
+           
+
+            background-color: whitesmoke;
+            margin: 5px;
+            border: 1px solid lightgrey;
+            display: none;
+          }
+          #loadMore {
+            width: 200px;
+            color: #fff;
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            background-color: blue;
+            transition: .3s;
+          }
+          #loadMore:hover {
+            color: blue;
+            background-color: #fff;
+            border: 1px solid blue;
+            text-decoration: none;
+          }
+          .noContent {
+            color: #000 !important;
+            background-color: transparent !important;
+            pointer-events: none;
+          }

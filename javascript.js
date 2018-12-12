@@ -1,12 +1,12 @@
 
-  lekkla() 
+lekkla()
 
-  
-  function UserAction(name) {
+
+function UserAction(name) {
     console.log(name);
     var res = encodeURI(name);
     var xhr = new XMLHttpRequest();
-    var url = 'http://localhost:8080/countries/'+res
+    var url = 'http://localhost:8080/countries/' + res
 
     console.log(url);
     xhr.open("GET", url, true);
@@ -70,31 +70,31 @@ function showsearch(app) {
     var sort = app.sort(dynamicSort("-installs"));
     var html = ''
     for (var i = 0; i < app.length; i++) {
-       
-            html +=
-            '<div class="card col-2" id="card">'+
-            '<img class="card-img-top" src="https://picsum.photos/200/300?image='+i+'">'+
-            '<div class="card-block">'+
-                
-                '<h4 class="card-title mt-3">'+ sort[i].app +'</h4>'+
-                '<div class="meta">'+
-                    '<h6>' + sort[i].category + '</h6>'+
-                   
-                '</div>'+
-                
-            '</div>'+
-           
-            '<hr>'+
-           '<div class="row">'+
-            '<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
-            '<div class="type">'+sort[i].type+'</div>'+
-            '</div>'+
-                '<br>'+
-                
-            '</div>'+
-        '</div>';
-            document.getElementById('wrapper').innerHTML = html;
-       
+
+        html +=
+            '<div class="card col-2" id="card">' +
+            '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+            '<div class="card-block">' +
+
+            '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+            '<div class="meta">' +
+            '<h6>' + sort[i].category + '</h6>' +
+
+            '</div>' +
+
+            '</div>' +
+
+            '<hr>' +
+            '<div class="row">' +
+            '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+            '<div class="type">' + sort[i].type + '</div>' +
+            '</div>' +
+            '<br>' +
+
+            '</div>' +
+            '</div>';
+        document.getElementById('wrapper').innerHTML = html;
+
     } page()
 }
 
@@ -141,16 +141,24 @@ function check() {
 
 function tong(tong) {
     console.log(tong);
- var type =  '<div class="dropdown open"  style ="margin-left:95px">'+
- '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >'+'Type'+'</button>'+
+    var type = '<div class="dropdown open"  style ="margin-left:95px">' +
+    '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
 
-' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >'+
- "<a  class='dropdown-item' onclick='Free(" + '"' + tong + '"' + ","+'"Free"'+")'>"+"Free"+"</a>"+"<br>"+"<a class='dropdown-item' onclick='Free(" + '"' + tong + '"' + ","+'"Paid"'+")'>"+"Paid"+"</a>"+"<br>"+"<a class='dropdown-item' onclick='tong(" + '"' + tong + '"' + ")'>"+"All"+"</a>"+
- '</div>'+
- '</div>';
- document.getElementById('type').innerHTML = type;
-    var url = 'http://localhost:8080/store/'+ tong;
- 
+    ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+    "<a  class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Everyone"' + ")'>" + "Everyone" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Teen"' + ")'>" + "Teen" + "</a>" +
+    "<a  class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
+    '</div>' +
+    '</div>'+
+    '<div class="dropdown open"  style ="margin-left:95px">' +
+        '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
+
+        ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+        "<a  class='dropdown-item' onclick='Free(" + '"' + tong + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='Free(" + '"' + tong + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='tong(" + '"' + tong + '"' + ")'>" + "All" + "</a>" +
+        '</div>' +
+        '</div>';
+    document.getElementById('type').innerHTML = type;
+    var url = 'http://localhost:8080/store/' + tong;
+
     console.log(url);
 
     var xhr = new XMLHttpRequest();
@@ -161,71 +169,70 @@ function tong(tong) {
             var tong = xhr.responseText;
             var lekkla = JSON.parse(tong)
             var sort = lekkla.sort(dynamicSort("-installs"));
-            var html=''
-console.log(html);
+            var html = ''
+            console.log(html);
 
             for (var i = 0; i < sort.length; i++) {
                 console.log(sort[i].app);
-                var b=sort[i].installs
-              
+                var b = sort[i].installs
+
                 var a = parseInt(b);
                 html +=
-                "<div class='card col-2' id='card'>" +
-                '<img class="card-img-top" src="https://picsum.photos/200/300?image='+i+'">'+
-                '<div class="card-block">'+
-                    
-                    '<h4 class="card-title mt-3">'+ sort[i].app +'</h4>'+
-                    '<div class="meta">'+
-                        '<h6>' + sort[i].category + '</h6>'+
-                       
-                    '</div>'+
-                    
-                '</div>'+
-               
-                '<hr>'+
-               '<div class="row">'+
-                '<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
-                '<div class="type">'+sort[i].type+'</div>'+
-                '</div>'+
-                "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + ")'>Large modal</button>"+
+                    "<div class='card col-2' id='card'>" +
+                    '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                    '<div class="card-block">' +
 
-            
-                    '<br>'+
-                    
-                '</div>'+
-            '</div>';
-            } 
+                    '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                    '<div class="meta">' +
+                    '<h6>' + sort[i].category + '</h6>' +
 
-           
+                    '</div>' +
+
+                    '</div>' +
+
+                    '<hr>' +
+                    '<div class="row">' +
+                    '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                    '<div class="type">' + sort[i].type + '</div>' +
+                    '</div>' +
+                    "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + ")'>Review</button>" +
+
+
+                    '<br>' +
+
+                    '</div>' +
+                    '</div>';
+            }
 
 
 
 
-                console.log(html);
+
+
+            console.log(html);
             document.getElementById('wrapper').innerHTML = html;
             page()
         }
     }
     xhr.send();
 }
-function page(){
+function page() {
     var _elPerPage = 10;//We are going to use this later to set the number of elements to display per page
-            var number_of_pages = Math.ceil($('card').length / _elPerPage); //This is used just for this demo to calculate the number of pages
-            function stats(){//This is used just for this demo to display the current settings
-              if($('#elPerPage').val() > 0)
-               {
-                 _elPerPage = $('#elPerPage').val();
-               }
-               number_of_pages = Math.ceil($('card').length / _elPerPage);
-               $('#number_of_pages').text(number_of_pages);
-               $('#elements_per_page').text(_elPerPage);
-            }
-            var senzill =  $('#wrapper').senzill( //Start a new senzill-pagination instance
-                  {
-                      elPerPage: _elPerPage //Number of elements to display per page
-                  }
-              );
-  }
+    var number_of_pages = Math.ceil($('card').length / _elPerPage); //This is used just for this demo to calculate the number of pages
+    function stats() {//This is used just for this demo to display the current settings
+        if ($('#elPerPage').val() > 0) {
+            _elPerPage = $('#elPerPage').val();
+        }
+        number_of_pages = Math.ceil($('card').length / _elPerPage);
+        $('#number_of_pages').text(number_of_pages);
+        $('#elements_per_page').text(_elPerPage);
+    }
+    var senzill = $('#wrapper').senzill( //Start a new senzill-pagination instance
+        {
+            elPerPage: _elPerPage //Number of elements to display per page
+        }
+    );
+}
 var data = []
 var allapp = ''
 function lekkla() {
@@ -280,38 +287,38 @@ function httpGet() {
     xhr.send();
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     // executes when HTML-Document is loaded and DOM is ready
-   
-   // breakpoint and up  
-   $(window).resize(function(){
-       if ($(window).width() >= 980){	
-   
-         // when you hover a toggle show its dropdown menu
-         $(".navbar .dropdown-toggle").hover(function () {
-            $(this).parent().toggleClass("show");
-            $(this).parent().find(".dropdown-menu").toggleClass("show"); 
-          });
-   
-           // hide the menu when the mouse leaves the dropdown
-         $( ".navbar .dropdown-menu" ).mouseleave(function() {
-           $(this).removeClass("show");  
-         });
-     
-           // do something here
-       }	
-   });  
-     
-   // document ready  
-   });
+
+    // breakpoint and up  
+    $(window).resize(function () {
+        if ($(window).width() >= 980) {
+
+            // when you hover a toggle show its dropdown menu
+            $(".navbar .dropdown-toggle").hover(function () {
+                $(this).parent().toggleClass("show");
+                $(this).parent().find(".dropdown-menu").toggleClass("show");
+            });
+
+            // hide the menu when the mouse leaves the dropdown
+            $(".navbar .dropdown-menu").mouseleave(function () {
+                $(this).removeClass("show");
+            });
+
+            // do something here
+        }
+    });
+
+    // document ready  
+});
 
 all()
 
 
-   function all() {
+function all() {
 
     var url = 'http://localhost:8080/store'
-  
+
     console.log(url);
 
     var xhr = new XMLHttpRequest();
@@ -321,44 +328,45 @@ all()
         if (xhr.readyState == 4) {
             var tong = xhr.responseText;
             var lekkla = JSON.parse(tong)
-           
-            var sort =  lekkla.sort(function(a, b){return b - a});
+
+            var sort = lekkla.sort(function (a, b) { return b - a });
             var html = '';
 
             for (var i = 0; i < 500; i++) {
                 //console.log(sort[i].installs);
-    var t=new Intl.NumberFormat().format(sort[i].installs)
+                var t = new Intl.NumberFormat().format(sort[i].installs)
                 html +=
-                '<div class="card col-2" id="card">'+
-                '<img class="card-img-top" src="https://picsum.photos/200/300?image='+i+'">'+
-                '<div class="card-block">'+
-                    
-                    '<h4 class="card-title mt-3">'+ sort[i].app +'</h4>'+
-                    '<div class="meta">'+
-                        '<h6>' + sort[i].category + '</h6>'+t+
-                       
-                    '</div>'+
-                    
-                '</div>'+
-               
-                '<hr>'+
-               '<div class="row">'+
-                '<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
-                '<div class="type">'+sort[i].type+'</div>'+
-                '</div>'+
-                    '<br>'+
-                    
-                '</div>'+
-            '</div>';
-            } 
+                    '<div class="card col-2" id="card">' +
+                    '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                    '<div class="card-block">' +
 
-           
+                    '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                    '<div class="meta">' +
+                    '<h6>' + sort[i].category + '</h6>' + t +
+
+                    '</div>' +
+
+                    '</div>' +
+
+                    '<hr>' +
+                    '<div class="row">' +
+                    '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                    '<div class="type">' + sort[i].type + '</div>' +
+                    '</div>' +
+                    '<br>' +
+
+                    '</div>' +
+                    '</div>';
+            }
 
 
 
 
-                console.log(html);
+
+
+            console.log(html);
             document.getElementById('wrapper').innerHTML = html;
+            document.getElementById('type').innerHTML = '';
             page()
         }
     }
@@ -369,78 +377,78 @@ function all2() {
 }
 
 function rating(app) {
- console.log(app);
- 
- var url = 'http://localhost:8080/store'
-  
- console.log(url);
+    console.log(app);
 
- var xhr = new XMLHttpRequest();
- xhr.open("GET", url, true);
+    var url = 'http://localhost:8080/store'
 
- xhr.onreadystatechange = function () {
-     if (xhr.readyState == 4) {
-         var tong = xhr.responseText;
-         var lekkla = JSON.parse(tong)
-        
-         var sort =  lekkla.sort(function(a, b){return b - a});
-         var html = '';
+    console.log(url);
 
-         for (var i = 0; i < sort.length; i++) {
-var a= parseInt(sort[i].rating)
-if(app==a){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
 
-             html +=
-             '<div class="card col-2" id="card">'+
-             '<img class="card-img-top" src="https://picsum.photos/200/300?image='+i+'">'+
-             '<div class="card-block">'+
-                 
-                 '<h4 class="card-title mt-3">'+ sort[i].app +'</h4>'+
-                 '<div class="meta">'+
-                     '<h6>' + sort[i].category + '</h6>'+
-                    
-                 '</div>'+
-                 
-             '</div>'+
-            
-             '<hr>'+
-            '<div class="row">'+
-             '<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
-             '<div class="type">'+sort[i].type+'</div>'+
-             '</div>'+
-                 '<br>'+
-                 
-             '</div>'+
-         '</div>';
-         } 
-             
-}console.log(html);
-         document.getElementById('wrapper').innerHTML = html;
-         page()
-        
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            var tong = xhr.responseText;
+            var lekkla = JSON.parse(tong)
 
+            var sort = lekkla.sort(function (a, b) { return b - a });
+            var html = '';
+
+            for (var i = 0; i < sort.length; i++) {
+                var a = parseInt(sort[i].rating)
+                if (app == a) {
+
+                    html +=
+                        '<div class="card col-2" id="card">' +
+                        '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                        '<div class="card-block">' +
+
+                        '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                        '<div class="meta">' +
+                        '<h6>' + sort[i].category + '</h6>' +
+
+                        '</div>' +
+
+                        '</div>' +
+
+                        '<hr>' +
+                        '<div class="row">' +
+                        '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                        '<div class="type">' + sort[i].type + '</div>' +
+                        '</div>' +
+                        '<br>' +
+
+                        '</div>' +
+                        '</div>';
+                }
+
+            } console.log(html);
+            document.getElementById('wrapper').innerHTML = html;
+            page()
 
 
 
-     }
- }
- xhr.send();
- 
+
+
+        }
+    }
+    xhr.send();
+
 }
 
-function Free(c,t) {
+function Free(c, t) {
     console.log(tong);
- var type = '<div class="dropdown open"  style ="margin-left:95px">'+
- '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >'+'Type'+'</button>'+
+    var type = '<div class="dropdown open"  style ="margin-left:95px">' +
+        '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
 
-' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >'+
- "<a  class='dropdown-item' onclick='Free(" + '"' + c + '"' + ","+'"Free"'+")'>"+"Free"+"</a>"+"<br>"+"<a class='dropdown-item' onclick='Free(" + '"' + c + '"' + ","+'"Paid"'+")'>"+"Paid"+"</a>"+"<br>"+"<a class='dropdown-item' onclick='tong(" + '"' + c + '"' + ")'>"+"All"+"</a>"+
- '</div>'+
- '</div>'
- console.log(type)
- document.getElementById('type').innerHTML = type;
- var url = 'http://localhost:8080/store/'+c+"/"+t;
- 
+        ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+        "<a  class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='tong(" + '"' + c + '"' + ")'>" + "All" + "</a>" +
+        '</div>' +
+        '</div>'
+    console.log(type)
+    document.getElementById('type').innerHTML = type;
+    var url = 'http://localhost:8080/store/' + c + "/" + t;
+
     console.log(url);
 
     var xhr = new XMLHttpRequest();
@@ -451,44 +459,44 @@ function Free(c,t) {
             var tong = xhr.responseText;
             var lekkla = JSON.parse(tong)
             var sort = lekkla.sort(dynamicSort("-installs"));
-       var html ='';    
-console.log(html);
+            var html = '';
+            console.log(html);
 
             for (var i = 0; i < sort.length; i++) {
                 console.log(sort[i].app);
-                var b=sort[i].installs
-              
+                var b = sort[i].installs
+
                 var a = parseInt(b);
                 html +=
-                '<div class="card col-2" id="card">'+
-                '<img class="card-img-top" src="https://picsum.photos/200/300?image='+i+'">'+
-                '<div class="card-block">'+
-                    
-                    '<h4 class="card-title mt-3">'+ sort[i].app +'</h4>'+
-                    '<div class="meta">'+
-                        '<h6>' + sort[i].category + '</h6>'+
-                       
-                    '</div>'+
-                    
-                '</div>'+
-               
-                '<hr>'+
-               '<div class="row">'+
-                '<span class="rating-static rating-'+sort[i].rating*10+'"></span>'+
-                '<div class="type">'+sort[i].type+'</div>'+
-                '</div>'+
-                    '<br>'+
-                    
-                '</div>'+
-            '</div>';
-            } 
+                    '<div class="card col-2" id="card">' +
+                    '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                    '<div class="card-block">' +
 
-           
+                    '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                    '<div class="meta">' +
+                    '<h6>' + sort[i].category + '</h6>' +
+
+                    '</div>' +
+
+                    '</div>' +
+
+                    '<hr>' +
+                    '<div class="row">' +
+                    '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                    '<div class="type">' + sort[i].type + '</div>' +
+                    '</div>' +
+                    '<br>' +
+
+                    '</div>' +
+                    '</div>';
+            }
 
 
 
 
-                console.log(html);
+
+
+            console.log(html);
             document.getElementById('wrapper').innerHTML = html;
             page()
         }
@@ -497,17 +505,17 @@ console.log(html);
 }
 
 
-function herff(name){
-    window.location.href= 'userreview.html' ;
-    localStorage.setItem("name",name);
+function herff(name) {
+    window.location.href = 'userreview.html';
+    localStorage.setItem("name", name);
 }
 
 
-function userrv(name){
-alert(name)
+function userrv(name) {
+    alert(name)
     var res = encodeURI(name);
     var xhr = new XMLHttpRequest();
-    var url = 'http://localhost:8080/countries/'+res
+    var url = 'http://localhost:8080/countries/' + res
 
     console.log(url);
     xhr.open("GET", url, true);
@@ -518,7 +526,7 @@ alert(name)
             var result = xhr.responseText;
             var jrresult = JSON.parse(result);
             var table = ''
-            ;
+                ;
 
             for (var i = 0; i < jrresult.length; i++) {
                 var ex = encodeURI(jrresult[i].app);
@@ -529,7 +537,7 @@ alert(name)
                     var b = Number(jrresult[i].sentimentPolarity).toFixed(2);
                     table +=
 
-                        '<div class="card">' +
+                        '<div class="content ">' +
                         '<div class="card-body">' +
                         '<div class="row">' +
                         '<div class="col-md-2">' +
@@ -557,13 +565,111 @@ alert(name)
                         '</div>' +
                         '</div>' +
                         '</div>';
-                        console.log(table);
-                        
-                    document.getElementById("usereview").innerHTML = table;
-                }
-            }
-            
+                   
+
+                    
+                }      
+            } 
+            table +='<a href="#" id="loadMore" onclick="q()">Load More</a>'
+               document.getElementById("usereview").innerHTML = table;
+                console.log(table);
+                loadmore()
         }
     }
     xhr.send();
-}
+} 
+ 
+function loadmore() {
+   
+      $(".content").slice(0, 4).show();
+     
+      
+   }
+
+
+    function q() {
+
+        $(".content:hidden").slice(0, 4).slideDown();
+        if($(".content:hidden").length == 0) {
+          $("#loadMore").text("No Content").addClass("noContent");
+        }
+
+      }  
+
+      function ContentRating(c,r) {
+        var res = encodeURI(r);
+        console.log(tong);
+        var type = '<div class="dropdown open "  style ="margin-left:95px">' +
+        '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
+    
+        ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+        "<a  class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Everyone"' + ")'>" + "Everyone" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Teen"' + ")'>" + "Teen" + "</a>" +
+        "<a  class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
+        '</div>' +
+        '</div>'+
+        '<div class="dropdown open"  style ="margin-left:95px">' +
+            '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
+    
+            ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+            "<a  class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='tong(" + '"' + c + '"' + ")'>" + "All" + "</a>" +
+            '</div>' +
+            '</div>'
+        console.log(type)
+        document.getElementById('type').innerHTML = type;
+        var url = 'http://localhost:8080/contentRat/' + c + "/" + res;
+    
+        console.log(url);
+    
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+    
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                var tong = xhr.responseText;
+                var lekkla = JSON.parse(tong)
+                var sort = lekkla.sort(dynamicSort("-installs"));
+                var html = '';
+                console.log(html);
+    
+                for (var i = 0; i < sort.length; i++) {
+                    console.log(sort[i].app);
+                    var b = sort[i].installs
+    
+                    var a = parseInt(b);
+                    html +=
+                        '<div class="card col-2" id="card">' +
+                        '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                        '<div class="card-block">' +
+    
+                        '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                        '<div class="meta">' +
+                        '<h6>' + sort[i].category + '</h6>' +
+    
+                        '</div>' +
+    
+                        '</div>' +
+    
+                        '<hr>' +
+                        '<div class="row">' +
+                        '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                        '<div class="type">' + sort[i].type + '</div>' +
+                        '</div>' +
+                        '<br>' +
+    
+                        '</div>' +
+                        '</div>';
+                }
+    
+    
+    
+    
+    
+    
+                console.log(html);
+                document.getElementById('wrapper').innerHTML = html;
+                page()
+            }
+        }
+        xhr.send();
+      }
+  
