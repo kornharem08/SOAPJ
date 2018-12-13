@@ -12,27 +12,25 @@ function showsearch(app) {
     for (var i = 0; i < app.length; i++) {
 
         html +=
-            '<div class="card col-2" id="card">' +
-            '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
-            '<div class="card-block">' +
-
-            '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
-            '<div class="meta">' +
-            '<h6>' + sort[i].category + '</h6>' +
-
-            '</div>' +
-
-            '</div>' +
-
-            '<hr>' +
-            '<div class="row">' +
-            '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
-            '<div class="type">' + sort[i].type + '</div>' +
-            '</div>' +
-            '<br>' +
-
-            '</div>' +
-            '</div>';
+           
+        "<div class='card col-2' id='card'>" +
+        '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+        '<div class="card-block">' +
+        '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+        '<div class="meta">' +
+        '<h6 style="color:#DF013A">' + sort[i].category + '</h6>' +
+        '<h6 style="color:#FF8000">' + sort[i].contentRating + '</h6>' +
+        '</div>' +
+        '</div>' +
+        '<hr style="margin-top:0px;">' +
+        '<div class="row">' +
+        '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+        '<div class="type">' + sort[i].type + '</div>' +
+        '</div>' +
+        "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + "," + '"' + sort[i].category + '"' + "," + '"' + sort[i].contentRating + '"' + "," + '"' + sort[i].type + '"' + "," + '"' + sort[i].installs + '"' + "," + '"' + sort[i].androidVer + '"' + "," + '"' + sort[i].lastUpdated + '"' + "," + '"' + sort[i].rating + '"' + ")'>Detail</button>" +
+        '<br>' +
+        '</div>' +
+        '</div>';
         document.getElementById('wrapper').innerHTML = html;
 
     } page()
@@ -312,7 +310,7 @@ function all2() {
 function rating(app) {
     console.log(app);
 
-    var url = 'http://localhost:8080/store'
+    var url = 'http://localhost:8080/Rating/'+app;
 
     console.log(url);
 
@@ -329,31 +327,28 @@ function rating(app) {
 
             for (var i = 0; i < sort.length; i++) {
                 var a = parseInt(sort[i].rating)
-                if (app == a) {
+               
 
                     html +=
-                        '<div class="card col-2" id="card">' +
-                        '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
-                        '<div class="card-block">' +
-
-                        '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
-                        '<div class="meta">' +
-                        '<h6>' + sort[i].category + '</h6>' +
-
-                        '</div>' +
-
-                        '</div>' +
-
-                        '<hr>' +
-                        '<div class="row">' +
-                        '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
-                        '<div class="type">' + sort[i].type + '</div>' +
-                        '</div>' +
-                        '<br>' +
-
-                        '</div>' +
-                        '</div>';
-                }
+                    "<div class='card col-2' id='card'>" +
+                    '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                    '<div class="card-block">' +
+                    '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                    '<div class="meta">' +
+                    '<h6 style="color:#DF013A">' + sort[i].category + '</h6>' +
+                    '<h6 style="color:#FF8000">' + sort[i].contentRating + '</h6>' +
+                    '</div>' +
+                    '</div>' +
+                    '<hr style="margin-top:0px;">' +
+                    '<div class="row">' +
+                    '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                    '<div class="type">' + sort[i].type + '</div>' +
+                    '</div>' +
+                    "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + "," + '"' + sort[i].category + '"' + "," + '"' + sort[i].contentRating + '"' + "," + '"' + sort[i].type + '"' + "," + '"' + sort[i].installs + '"' + "," + '"' + sort[i].androidVer + '"' + "," + '"' + sort[i].lastUpdated + '"' + "," + '"' + sort[i].rating + '"' + ")'>Detail</button>" +
+                    '<br>' +
+                    '</div>' +
+                    '</div>';
+                
 
             } console.log(html);
             document.getElementById('wrapper').innerHTML = html;
@@ -372,12 +367,12 @@ function rating(app) {
 function Free(c, t) {
     console.log(tong);
     var type = '<div class="dropdown open"  style ="margin-left:95px">' +
-        '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
+    '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
 
-        ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
-        "<a  class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='tong(" + '"' + c + '"' + ")'>" + "All" + "</a>" +
-        '</div>' +
-        '</div>'
+    ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+    "<a  class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='tong(" + '"' + c + '"' + ")'>" + "All" + "</a>" +
+    '</div>' +
+    '</div>'
     console.log(type)
     document.getElementById('type').innerHTML = type;
     var url = 'http://localhost:8080/store/' + c + "/" + t;
@@ -401,27 +396,24 @@ function Free(c, t) {
 
                 var a = parseInt(b);
                 html +=
-                    '<div class="card col-2" id="card">' +
-                    '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
-                    '<div class="card-block">' +
-
-                    '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
-                    '<div class="meta">' +
-                    '<h6>' + sort[i].category + '</h6>' +
-
-                    '</div>' +
-
-                    '</div>' +
-
-                    '<hr>' +
-                    '<div class="row">' +
-                    '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
-                    '<div class="type">' + sort[i].type + '</div>' +
-                    '</div>' +
-                    '<br>' +
-
-                    '</div>' +
-                    '</div>';
+                "<div class='card col-2' id='card'>" +
+                '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                '<div class="card-block">' +
+                '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                '<div class="meta">' +
+                '<h6 style="color:#DF013A">' + sort[i].category + '</h6>' +
+                '<h6 style="color:#FF8000">' + sort[i].contentRating + '</h6>' +
+                '</div>' +
+                '</div>' +
+                '<hr style="margin-top:0px;">' +
+                '<div class="row">' +
+                '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                '<div class="type">' + sort[i].type + '</div>' +
+                '</div>' +
+                "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + "," + '"' + sort[i].category + '"' + "," + '"' + sort[i].contentRating + '"' + "," + '"' + sort[i].type + '"' + "," + '"' + sort[i].installs + '"' + "," + '"' + sort[i].androidVer + '"' + "," + '"' + sort[i].lastUpdated + '"' + "," + '"' + sort[i].rating + '"' + ")'>Detail</button>" +
+                '<br>' +
+                '</div>' +
+                '</div>';
             }
 
 
@@ -452,8 +444,6 @@ function userrv(name,category,contentRating,type,installs,androidVer,lastUpdated
 
     console.log(url);
     xhr.open("GET", url, true);
-
-
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             var result = xhr.responseText;
@@ -615,27 +605,24 @@ function loadmore() {
     
                     var a = parseInt(b);
                     html +=
-                        '<div class="card col-2" id="card">' +
-                        '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
-                        '<div class="card-block">' +
-    
-                        '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
-                        '<div class="meta">' +
-                        '<h6>' + sort[i].category + '</h6>' +
-    
-                        '</div>' +
-    
-                        '</div>' +
-    
-                        '<hr>' +
-                        '<div class="row">' +
-                        '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
-                        '<div class="type">' + sort[i].type + '</div>' +
-                        '</div>' +
-                        '<br>' +
-    
-                        '</div>' +
-                        '</div>';
+                        "<div class='card col-2' id='card'>" +
+                    '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                    '<div class="card-block">' +
+                    '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                    '<div class="meta">' +
+                    '<h6 style="color:#DF013A">' + sort[i].category + '</h6>' +
+                    '<h6 style="color:#FF8000">' + sort[i].contentRating + '</h6>' +
+                    '</div>' +
+                    '</div>' +
+                    '<hr style="margin-top:0px;">' +
+                    '<div class="row">' +
+                    '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                    '<div class="type">' + sort[i].type + '</div>' +
+                    '</div>' +
+                    "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + "," + '"' + sort[i].category + '"' + "," + '"' + sort[i].contentRating + '"' + "," + '"' + sort[i].type + '"' + "," + '"' + sort[i].installs + '"' + "," + '"' + sort[i].androidVer + '"' + "," + '"' + sort[i].lastUpdated + '"' + "," + '"' + sort[i].rating + '"' + ")'>Detail</button>" +
+                    '<br>' +
+                    '</div>' +
+                    '</div>';
                 }
     
     
