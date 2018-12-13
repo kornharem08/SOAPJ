@@ -2,66 +2,6 @@
 lekkla()
 
 
-function UserAction(name) {
-    console.log(name);
-    var res = encodeURI(name);
-    var xhr = new XMLHttpRequest();
-    var url = 'http://localhost:8080/countries/' + res
-
-    console.log(url);
-    xhr.open("GET", url, true);
-
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            var result = xhr.responseText;
-            var jrresult = JSON.parse(result);
-            var table = '';
-            for (var i = 0; i < jrresult.length; i++) {
-                var ex = encodeURI(jrresult[i].app);
-                if (ex === res) {
-                    console.log(jrresult[i].app, name);
-                    var z = jrresult[i].app;
-                    var a = Number(jrresult[i].sentimentSubjectivity).toFixed(2);
-                    var b = Number(jrresult[i].sentimentPolarity).toFixed(2);
-                    table +=
-                        '<div class="card">' +
-                        '<div class="card-body">' +
-                        '<div class="row">' +
-                        '<div class="col-md-2">' +
-                        '<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>' +
-                        '<p class="text-secondary text-center">15 Minutes Ago</p>' +
-                        '</div>' +
-                        '<div class="col-md-10">' +
-                        '<p>' +
-                        '<a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Maniruzzaman Akash</strong></a>' +
-                        '<span class="float-right"><i class="text-warning fa fa-star"></i></span>' +
-                        '<span class="float-right"><i class="text-warning fa fa-star"></i></span>' +
-                        '<span class="float-right"><i class="text-warning fa fa-star"></i></span>' +
-                        '<span class="float-right"><i class="text-warning fa fa-star"></i></span>' +
-                        '</p>' +
-                        '<div class="clearfix"></div>' +
-                        '<p>' + jrresult[i].translatedReview + '</p>' +
-                        '<br>' +
-                        '<p>' + z + '</p>' +
-                        '<p>' +
-                        '<a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>' +
-                        '<a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>' +
-                        '</p>' +
-
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>';
-                    document.getElementById("usereview").innerHTML = table;
-                }
-            }
-
-        }
-    }
-    xhr.send();
-}
-
 
 
 
@@ -175,31 +115,26 @@ function tong(tong) {
             for (var i = 0; i < sort.length; i++) {
                 console.log(sort[i].app);
                 var b = sort[i].installs
-
+                var t = new Intl.NumberFormat().format(sort[i].installs)
                 var a = parseInt(b);
                 html +=
+                
                     "<div class='card col-2' id='card'>" +
                     '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
                     '<div class="card-block">' +
-
                     '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
                     '<div class="meta">' +
-                    '<h6>' + sort[i].category + '</h6>' +
-
+                    '<h6 style="color:#DF013A">' + sort[i].category + '</h6>' +
+                    '<h6 style="color:#FF8000">' + sort[i].contentRating + '</h6>' +
                     '</div>' +
-
                     '</div>' +
-
-                    '<hr>' +
+                    '<hr style="margin-top:0px;">' +
                     '<div class="row">' +
                     '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
                     '<div class="type">' + sort[i].type + '</div>' +
                     '</div>' +
-                    "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + ")'>Review</button>" +
-
-
+                    "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + "," + '"' + sort[i].category + '"' + "," + '"' + sort[i].contentRating + '"' + "," + '"' + sort[i].type + '"' + "," + '"' + sort[i].installs + '"' + "," + '"' + sort[i].androidVer + '"' + "," + '"' + sort[i].lastUpdated + '"' + "," + '"' + sort[i].rating + '"' + ")'>Detail</button>" +
                     '<br>' +
-
                     '</div>' +
                     '</div>';
             }
@@ -336,27 +271,25 @@ function all() {
                 //console.log(sort[i].installs);
                 var t = new Intl.NumberFormat().format(sort[i].installs)
                 html +=
-                    '<div class="card col-2" id="card">' +
-                    '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
-                    '<div class="card-block">' +
-
-                    '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
-                    '<div class="meta">' +
-                    '<h6>' + sort[i].category + '</h6>' + t +
-
-                    '</div>' +
-
-                    '</div>' +
-
-                    '<hr>' +
-                    '<div class="row">' +
-                    '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
-                    '<div class="type">' + sort[i].type + '</div>' +
-                    '</div>' +
-                    '<br>' +
-
-                    '</div>' +
-                    '</div>';
+                   
+                "<div class='card col-2' id='card'>" +
+                '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                '<div class="card-block">' +
+                '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                '<div class="meta">' +
+                '<h6 style="color:#DF013A">' + sort[i].category + '</h6>' +
+                '<h6 style="color:#FF8000">' + sort[i].contentRating + '</h6>' +
+                '</div>' +
+                '</div>' +
+                '<hr style="margin-top:0px;">' +
+                '<div class="row">' +
+                '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                '<div class="type">' + sort[i].type + '</div>' +
+                '</div>' +
+                "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + "," + '"' + sort[i].category + '"' + "," + '"' + sort[i].contentRating + '"' + "," + '"' + sort[i].type + '"' + "," + '"' + sort[i].installs + '"' + "," + '"' + sort[i].androidVer + '"' + "," + '"' + sort[i].lastUpdated + '"' + "," + '"' + sort[i].rating + '"' + ")'>Detail</button>" +
+                '<br>' +
+                '</div>' +
+                '</div>';
             }
 
 
@@ -511,7 +444,7 @@ function herff(name) {
 }
 
 
-function userrv(name) {
+function userrv(name,category,contentRating,type,installs,androidVer,lastUpdated,rating) {
     alert(name)
     var res = encodeURI(name);
     var xhr = new XMLHttpRequest();
@@ -525,28 +458,74 @@ function userrv(name) {
         if (xhr.readyState == 4) {
             var result = xhr.responseText;
             var jrresult = JSON.parse(result);
-            var table = ''
-                ;
+            var t = new Intl.NumberFormat().format(installs)
+            var randomnumber=Math.floor(Math.random()*101);
+            var table = 
+         
+         
+            '<div class="content ">' +
+            '<div class="card-body">' +
+            '<div class="row">' +
+            '<div class="col-md-4">' +
+            '<img src="https://picsum.photos/250/250?image=' + randomnumber + '" class="img img-rounded" style="height:150px, width:550px">' +
+            '<p class="text-secondary text-center"></p>' +
+            '</div>' +
+            '<div class="col-md-8">' +
 
+            '<h2>'+name+'</h2>'+
+            '<div class="clearfix"></div>' +
+            '<div class="row">' +
+            '<div style="margin-left:15px;">'+'<p">' +"Category: "+'&nbsp'+'&nbsp'+'&nbsp'+category + '</p>' +'</div>'+'&nbsp'+'&nbsp'+'&nbsp'+'&nbsp'+'&nbsp'+'&nbsp'+
+            '<div>'+'<p>' +"Contenrating: "+'&nbsp'+'&nbsp'+'&nbsp'+contentRating + '</p>'+'</div>' +
+            '</div>' +
+            '<div class="row">'+
+            '<div style="margin-left:15px;">'+'<p>'+"Downloaded:"+'&nbsp'+'&nbsp'+'&nbsp'+t+"+"+'</p>'+'</div>'+'&nbsp'+'&nbsp'+'&nbsp'+'&nbsp'+'&nbsp'+'&nbsp'+
+            '<div>'+'<p>'+"LastUpadated:"+'&nbsp'+'&nbsp'+'&nbsp'+lastUpdated+'</p>'+'</div>'+
+            '</div>'+
+            '<div class="row">'+
+            '<div style="margin-left:15px;">'+"AndroidVersion:"+'&nbsp'+'&nbsp'+'&nbsp'+androidVer+'</div>'+'&nbsp'+'&nbsp'+'&nbsp'+'&nbsp'+'&nbsp'+
+            '<div>'+'<p>'+"Rating:"+'&nbsp'+'&nbsp'+'&nbsp'+rating+'</p>'+'</div>'+
+            '</div>' +  
+            '<div>'+'<p>'+"Type:"+'&nbsp'+'&nbsp'+'&nbsp'+type+'</p>'+'</div>'+
+            '<button type="button" class="btn btn-success">Install</button>'+
+            '</div>'+
+            '</div>' +
+            '</div>' +
+            '</div>' ;
+         
+           
+
+               
             for (var i = 0; i < jrresult.length; i++) {
                 var ex = encodeURI(jrresult[i].app);
                 if (ex === res) {
                     console.log(jrresult[i].app, name);
-                    var z = jrresult[i].app;
+                    var z = jrresult[i].sentiment;
+                    s='';
+                    if(z == "Positive"){
+                    z = "I like this ";
+                    s = "color:green"
+                    }else{
+                        z= "I Don't like this "
+                        s = "color:red"
+                    }
                     var a = Number(jrresult[i].sentimentSubjectivity).toFixed(2);
                     var b = Number(jrresult[i].sentimentPolarity).toFixed(2);
+                    var r = Math.random().toString(36).substring(7);
+                  
                     table +=
-
+                    
                         '<div class="content ">' +
                         '<div class="card-body">' +
                         '<div class="row">' +
                         '<div class="col-md-2">' +
-                        '<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>' +
+                        '<img src="123.jpg" class="img img-rounded img-fluid"/>' +
                         '<p class="text-secondary text-center">15 Minutes Ago</p>' +
+                        '<p class="text-center" style="'+s+'">' + z + '</p>' +
                         '</div>' +
                         '<div class="col-md-10">' +
                         '<p>' +
-                        '<a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Maniruzzaman Akash</strong></a>' +
+                        '<a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'+r+'</strong></a>' +
                         '<span class="float-right"><i class="text-warning fa fa-star"></i></span>' +
                         '<span class="float-right"><i class="text-warning fa fa-star"></i></span>' +
                         '<span class="float-right"><i class="text-warning fa fa-star"></i></span>' +
@@ -555,7 +534,6 @@ function userrv(name) {
                         '<div class="clearfix"></div>' +
                         '<p>' + jrresult[i].translatedReview + '</p>' +
                         '<br>' +
-                        '<p>' + z + '</p>' +
                         '<p>' +
                         '<a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>' +
                         '<a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>' +

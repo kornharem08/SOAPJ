@@ -1,5 +1,5 @@
 *{
-    font-family: "Times New Roman", Times, serif;
+    font-family: 'Staatliches', cursive;
 }
 .card-title {
     text-overflow: ellipsis;
@@ -542,3 +542,5 @@ position: absolute;
             background-color: transparent !important;
             pointer-events: none;
           }
+
+      
