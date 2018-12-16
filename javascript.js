@@ -21,6 +21,7 @@ function showsearch(app) {
         '<h6 style="color:#DF013A">' + sort[i].category + '</h6>' +
         '<h6 style="color:#FF8000">' + sort[i].contentRating + '</h6>' +
         '</div>' +
+
         '</div>' +
         '<hr style="margin-top:0px;">' +
         '<div class="row">' +
@@ -79,19 +80,19 @@ function check() {
 
 function tong(tong) {
     console.log(tong);
-    var type = '<div class="dropdown open"  style ="margin-left:95px">' +
-    '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
+    var type = '<div class="dropdown open"  style ="margin-left:150px">' +
+    '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem;"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
 
     ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
-    "<a  class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Everyone"' + ")'>" + "Everyone" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Teen"' + ")'>" + "Teen" + "</a>" +
-    "<a  class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
+    "<a  class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Everyone"' + ")'>" + "Everyone" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Teen"' + ")'>" + "Teen" + "</a>" +
+    "<a  class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating(" + '"' + tong + '"' + "," + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
     '</div>' +
     '</div>'+
-    '<div class="dropdown open"  style ="margin-left:95px">' +
+    '<div class="dropdown open"  style ="margin-left:20px">' +
         '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
 
         ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
-        "<a  class='dropdown-item' onclick='Free(" + '"' + tong + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='Free(" + '"' + tong + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='tong(" + '"' + tong + '"' + ")'>" + "All" + "</a>" +
+        "<a  class='dropdown-item' onclick='Free(" + '"' + tong + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<a class='dropdown-item' onclick='Free(" + '"' + tong + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<a class='dropdown-item' onclick='tong(" + '"' + tong + '"' + ")'>" + "All" + "</a>" +
         '</div>' +
         '</div>';
     document.getElementById('type').innerHTML = type;
@@ -109,7 +110,7 @@ function tong(tong) {
             var sort = lekkla.sort(dynamicSort("-installs"));
             var html = ''
             console.log(html);
-
+            
             for (var i = 0; i < sort.length; i++) {
                 console.log(sort[i].app);
                 var b = sort[i].installs
@@ -135,6 +136,8 @@ function tong(tong) {
                     '<br>' +
                     '</div>' +
                     '</div>';
+
+                    
             }
 
 
@@ -144,8 +147,10 @@ function tong(tong) {
 
             console.log(html);
             document.getElementById('wrapper').innerHTML = html;
+         
             page()
         }
+        
     }
     xhr.send();
 }
@@ -201,9 +206,10 @@ function httpGet() {
             var lekkla = JSON.parse(tong)
             var sort = lekkla.sort(dynamicSort("-installs"));
             var html = ''
+            
             for (var i = 0; i < 10; i++) {
 
-                html += '<br>' +
+                html += '<br>' + 
                     ' <div class="card col-2"  >' +
                     '<img class="card-img-top" src="..." alt="Card image cap">' +
                     '<div class="card-body">' +
@@ -213,6 +219,7 @@ function httpGet() {
                 console.log(html);
 
                 document.getElementById('row').innerHTML = html;
+                
                 // $('#lekkla').html(html)    
             }
         }
@@ -249,9 +256,25 @@ all()
 
 
 function all() {
+    var type = '<div class="dropdown open"  style ="margin-left:150px">' +
+    '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem;"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
+
+    ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+    "<a  class='dropdown-item' onclick='ContentRatingall(" + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Everyone"' + ")'>" + "Everyone" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Teen"' + ")'>" + "Teen" + "</a>" +
+    "<a  class='dropdown-item' onclick='ContentRatingall(" + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
+    '</div>' +
+    '</div>'+
+    '<div class="dropdown open"  style ="margin-left:20px">' +
+        '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
+
+        ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+        "<a  class='dropdown-item' onclick='typeall(" + '"Free"' + ")'>" + "Free" + "</a>" + "<a class='dropdown-item' onclick='typeall(" + '"Paid"' + ")'>" + "Paid" + "</a>" + "<a class='dropdown-item' onclick='all2()'>" + "All" + "</a>" +
+        '</div>' +
+        '</div>';
+    document.getElementById('type').innerHTML = type;
 
     var url = 'http://localhost:8080/store'
-
+    
     console.log(url);
 
     var xhr = new XMLHttpRequest();
@@ -265,7 +288,7 @@ function all() {
             var sort = lekkla.sort(function (a, b) { return b - a });
             var html = '';
 
-            for (var i = 0; i < 500; i++) {
+            for (var i = 0; i < 100; i++) {
                 //console.log(sort[i].installs);
                 var t = new Intl.NumberFormat().format(sort[i].installs)
                 html +=
@@ -297,7 +320,7 @@ function all() {
 
             console.log(html);
             document.getElementById('wrapper').innerHTML = html;
-            document.getElementById('type').innerHTML = '';
+           
             page()
         }
     }
@@ -309,7 +332,22 @@ function all2() {
 
 function rating(app) {
     console.log(app);
+    var type = '<div class="dropdown open"  style ="margin-left:150px">' +
+    '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem;"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
 
+    ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+    "<a  class='dropdown-item' onclick='ContentRating2(" + '"' + app + '"' + "," + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + app + '"' + "," + '"Everyone"' + ")'>" + "Everyone" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + app + '"' + "," + '"Teen"' + ")'>" + "Teen" + "</a>" +
+    "<a  class='dropdown-item' onclick='ContentRating2(" + '"' + app + '"' + "," + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + app + '"' + "," + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + app + '"' + "," + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
+    '</div>' +
+    '</div>'+
+    '<div class="dropdown open"  style ="margin-left:20px">' +
+        '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
+
+        ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+        "<a  class='dropdown-item' onclick='ratFree(" + '"' + app + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<a class='dropdown-item' onclick='ratFree(" + '"' + app + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<a class='dropdown-item' onclick='rating(" + '"' + app + '"' + ")'>" + "All" + "</a>" +
+        '</div>' +
+        '</div>';
+    document.getElementById('type').innerHTML = type;
     var url = 'http://localhost:8080/Rating/'+app;
 
     console.log(url);
@@ -366,11 +404,19 @@ function rating(app) {
 
 function Free(c, t) {
     console.log(tong);
-    var type = '<div class="dropdown open"  style ="margin-left:95px">' +
+    var type ='<div class="dropdown open "  style ="margin-left:150px">' +
+    '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
+
+    ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+    "<a  class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Everyone"' + ")'>" + "Everyone" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Teen"' + ")'>" + "Teen" + "</a>" +
+    "<a  class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
+    '</div>' +
+    '</div>'+
+     '<div class="dropdown open"  style ="margin-left:20px">' +
     '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
 
     ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
-    "<a  class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='tong(" + '"' + c + '"' + ")'>" + "All" + "</a>" +
+    "<a  class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>"  + "<a class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<a class='dropdown-item' onclick='tong(" + '"' + c + '"' + ")'>" + "All" + "</a>" +
     '</div>' +
     '</div>'
     console.log(type)
@@ -548,13 +594,19 @@ function userrv(name,category,contentRating,type,installs,androidVer,lastUpdated
 } 
  
 function loadmore() {
-   
-      $(".content").slice(0, 4).show();
-     
+    if($(".content").length > 1) {
+         $(".content").slice(0, 4).show();
+        
+      }
+      else {
+        $(".content").slice(0, 1).show();
+        $("#loadMore").text("No Comment").addClass("noContent");
+     }
+    
       
    }
 
-
+   
     function q() {
 
         $(".content:hidden").slice(0, 4).slideDown();
@@ -567,19 +619,19 @@ function loadmore() {
       function ContentRating(c,r) {
         var res = encodeURI(r);
         console.log(tong);
-        var type = '<div class="dropdown open "  style ="margin-left:95px">' +
+        var type = '<div class="dropdown open "  style ="margin-left:150px">' +
         '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
     
         ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
-        "<a  class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Everyone"' + ")'>" + "Everyone" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Teen"' + ")'>" + "Teen" + "</a>" +
-        "<a  class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
+        "<a  class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Everyone"' + ")'>" + "Everyone" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Teen"' + ")'>" + "Teen" + "</a>" +
+        "<a  class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating(" + '"' + c + '"' + "," + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
         '</div>' +
         '</div>'+
-        '<div class="dropdown open"  style ="margin-left:95px">' +
+        '<div class="dropdown open"  style ="margin-left:20px">' +
             '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
     
             ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
-            "<a  class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<br>" + "<a class='dropdown-item' onclick='tong(" + '"' + c + '"' + ")'>" + "All" + "</a>" +
+            "<a  class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>"  + "<a class='dropdown-item' onclick='Free(" + '"' + c + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<a class='dropdown-item' onclick='tong(" + '"' + c + '"' + ")'>" + "All" + "</a>" +
             '</div>' +
             '</div>'
         console.log(type)
@@ -637,4 +689,292 @@ function loadmore() {
         }
         xhr.send();
       }
-  
+      function typeall(t) {
+          console.log(t);
+          
+        var type = '<div class="dropdown open"  style ="margin-left:150px">' +
+        '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem;"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
+    
+        ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+        "<a  class='dropdown-item' onclick='ContentRatingall(" + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Everyone"' + ")'>" + "Everyone" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Teen"' + ")'>" + "Teen" + "</a>" +
+        "<a  class='dropdown-item' onclick='ContentRatingall(" + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
+        '</div>' +
+        '</div>'+
+        '<div class="dropdown open"  style ="margin-left:20px">' +
+            '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
+    
+            ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+            "<a  class='dropdown-item' onclick='typeall(" + '"Free"' + ")'>" + "Free" + "</a>" + "<a class='dropdown-item' onclick='typeall(" + '"Paid"' + ")'>" + "Paid" + "</a>" + "<a class='dropdown-item' onclick='all2()'>" + "All" + "</a>" +
+            '</div>' +
+            '</div>';
+        document.getElementById('type').innerHTML = type;
+        var res = encodeURI(t);
+        var url = 'http://localhost:8080/TypeAll/'+res
+        
+        console.log(url);
+    
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+    
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                var tong = xhr.responseText;
+                var lekkla = JSON.parse(tong)
+    
+                var sort = lekkla.sort(function (a, b) { return b - a });
+                var html = '';
+    
+                for (var i = 0; i < 100; i++) {
+                    //console.log(sort[i].installs);
+                    var t = new Intl.NumberFormat().format(sort[i].installs)
+                    html +=
+                       
+                    "<div class='card col-2' id='card'>" +
+                    '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                    '<div class="card-block">' +
+                    '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                    '<div class="meta">' +
+                    '<h6 style="color:#DF013A">' + sort[i].category + '</h6>' +
+                    '<h6 style="color:#FF8000">' + sort[i].contentRating + '</h6>' +
+                    '</div>' +
+                    '</div>' +
+                    '<hr style="margin-top:0px;">' +
+                    '<div class="row">' +
+                    '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                    '<div class="type">' + sort[i].type + '</div>' +
+                    '</div>' +
+                    "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + "," + '"' + sort[i].category + '"' + "," + '"' + sort[i].contentRating + '"' + "," + '"' + sort[i].type + '"' + "," + '"' + sort[i].installs + '"' + "," + '"' + sort[i].androidVer + '"' + "," + '"' + sort[i].lastUpdated + '"' + "," + '"' + sort[i].rating + '"' + ")'>Detail</button>" +
+                    '<br>' +
+                    '</div>' +
+                    '</div>';
+                }
+    
+    
+    
+    
+    
+    
+                console.log(html);
+                document.getElementById('wrapper').innerHTML = html;
+               
+                page()
+            }
+        }
+        xhr.send();
+      }
+      function ContentRatingall(t) {
+        console.log(t);
+          
+        var type = '<div class="dropdown open"  style ="margin-left:150px">' +
+        '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem;"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
+    
+        ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+        "<a  class='dropdown-item' onclick='ContentRatingall(" + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Everyone"' + ")'>" + "Everyone" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Teen"' + ")'>" + "Teen" + "</a>" +
+        "<a  class='dropdown-item' onclick='ContentRatingall(" + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRatingall(" + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
+        '</div>' +
+        '</div>'+
+        '<div class="dropdown open"  style ="margin-left:20px">' +
+            '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
+    
+            ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+            "<a  class='dropdown-item' onclick='typeall(" + '"Free"' + ")'>" + "Free" + "</a>" + "<a class='dropdown-item' onclick='typeall(" + '"Paid"' + ")'>" + "Paid" + "</a>" + "<a class='dropdown-item' onclick='all2()'>" + "All" + "</a>" +
+            '</div>' +
+            '</div>';
+        document.getElementById('type').innerHTML = type;
+        var res = encodeURI(t);
+        var url = 'http://localhost:8080/contentRatAll/'+res
+        
+        console.log(url);
+    
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+    
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                var tong = xhr.responseText;
+                var lekkla = JSON.parse(tong)
+    
+                var sort = lekkla.sort(function (a, b) { return b - a });
+                var html = '';
+    
+                for (var i = 0; i < sort.length; i++) {
+                    //console.log(sort[i].installs);
+                    var t = new Intl.NumberFormat().format(sort[i].installs)
+                    html +=
+                       
+                    "<div class='card col-2' id='card'>" +
+                    '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                    '<div class="card-block">' +
+                    '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                    '<div class="meta">' +
+                    '<h6 style="color:#DF013A">' + sort[i].category + '</h6>' +
+                    '<h6 style="color:#FF8000">' + sort[i].contentRating + '</h6>' +
+                    '</div>' +
+                    '</div>' +
+                    '<hr style="margin-top:0px;">' +
+                    '<div class="row">' +
+                    '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                    '<div class="type">' + sort[i].type + '</div>' +
+                    '</div>' +
+                    "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + "," + '"' + sort[i].category + '"' + "," + '"' + sort[i].contentRating + '"' + "," + '"' + sort[i].type + '"' + "," + '"' + sort[i].installs + '"' + "," + '"' + sort[i].androidVer + '"' + "," + '"' + sort[i].lastUpdated + '"' + "," + '"' + sort[i].rating + '"' + ")'>Detail</button>" +
+                    '<br>' +
+                    '</div>' +
+                    '</div>';
+                }
+    
+    
+    
+    
+    
+    
+                console.log(html);
+                document.getElementById('wrapper').innerHTML = html;
+               
+                page()
+            }
+        }
+        xhr.send();
+      }
+      function ContentRating2(r,c) {
+          console.log(r,c);
+          
+        var type = '<div class="dropdown open"  style ="margin-left:150px">' +
+        '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem;"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
+    
+        ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+        "<a  class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Everyone"' + ")'>" + "Everyone" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Teen"' + ")'>" + "Teen" + "</a>" +
+        "<a  class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
+        '</div>' +
+        '</div>'+
+        '<div class="dropdown open"  style ="margin-left:20px">' +
+            '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
+    
+            ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+            "<a  class='dropdown-item' onclick='ratFree(" + '"' + r + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<a class='dropdown-item' onclick='ratFree(" + '"' + r + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<a class='dropdown-item' onclick='rating(" + '"' + r + '"' + ")'>" + "All" + "</a>" +
+            '</div>' +
+            '</div>';
+        document.getElementById('type').innerHTML = type;
+        var res = encodeURI(c);
+        var url = 'http://localhost:8080/RatCon/'+r+'/'+res;
+    
+        console.log(url);
+    
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+    
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                var tong = xhr.responseText;
+                var lekkla = JSON.parse(tong)
+    
+                var sort = lekkla.sort(function (a, b) { return b - a });
+                var html = '';
+    
+                for (var i = 0; i < sort.length; i++) {
+                    var a = parseInt(sort[i].rating)
+                   
+    
+                        html +=
+                        "<div class='card col-2' id='card'>" +
+                        '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                        '<div class="card-block">' +
+                        '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                        '<div class="meta">' +
+                        '<h6 style="color:#DF013A">' + sort[i].category + '</h6>' +
+                        '<h6 style="color:#FF8000">' + sort[i].contentRating + '</h6>' +
+                        '</div>' +
+                        '</div>' +
+                        '<hr style="margin-top:0px;">' +
+                        '<div class="row">' +
+                        '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                        '<div class="type">' + sort[i].type + '</div>' +
+                        '</div>' +
+                        "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + "," + '"' + sort[i].category + '"' + "," + '"' + sort[i].contentRating + '"' + "," + '"' + sort[i].type + '"' + "," + '"' + sort[i].installs + '"' + "," + '"' + sort[i].androidVer + '"' + "," + '"' + sort[i].lastUpdated + '"' + "," + '"' + sort[i].rating + '"' + ")'>Detail</button>" +
+                        '<br>' +
+                        '</div>' +
+                        '</div>';
+                    
+    
+                } console.log(html);
+                document.getElementById('wrapper').innerHTML = html;
+                page()
+    
+    
+    
+    
+    
+            }
+        }
+        xhr.send();
+      }
+      function ratFree(r,t) {
+        var type = '<div class="dropdown open"  style ="margin-left:150px">' +
+        '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem;"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'ContentRating' + '</button>' +
+    
+        ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+        "<a  class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Adults only 18+"' + ")'>" + "Adults only 18+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Everyone"' + ")'>" + "Everyone" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Teen"' + ")'>" + "Teen" + "</a>" +
+        "<a  class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Everyone 10+"' + ")'>" + "Everyone 10+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Mature 17+"' + ")'>" + "Mature 17+" + "</a>"  + "<a class='dropdown-item' onclick='ContentRating2(" + '"' + r + '"' + "," + '"Unrated"' + ")'>" + "Unrated" + "</a>" +
+        '</div>' +
+        '</div>'+
+        '<div class="dropdown open"  style ="margin-left:20px">' +
+            '<button class="btn btn-secondary dropdown-toggle " style="min-width:5rem"  type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >' + 'Type' + '</button>' +
+    
+            ' <div class="dropdown-menu " style="min-width:0.1rem" aria-labelledby="triggerId" >' +
+            "<a  class='dropdown-item' onclick='ratFree(" + '"' + r + '"' + "," + '"Free"' + ")'>" + "Free" + "</a>" + "<a class='dropdown-item' onclick='ratFree(" + '"' + r + '"' + "," + '"Paid"' + ")'>" + "Paid" + "</a>" + "<a class='dropdown-item' onclick='rating(" + '"' + r + '"' + ")'>" + "All" + "</a>" +
+            '</div>' +
+            '</div>';
+        document.getElementById('type').innerHTML = type;
+        var res = encodeURI(t);
+        var url = 'http://localhost:8080/RatType/'+r+'/'+res;
+    
+        console.log(url);
+    
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+    
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                var tong = xhr.responseText;
+                var lekkla = JSON.parse(tong)
+    
+                var sort = lekkla.sort(function (a, b) { return b - a });
+                var html = '';
+    
+                for (var i = 0; i < sort.length; i++) {
+                    var a = parseInt(sort[i].rating)
+                   
+    
+                        html +=
+                        "<div class='card col-2' id='card'>" +
+                        '<img class="card-img-top" src="https://picsum.photos/200/300?image=' + i + '">' +
+                        '<div class="card-block">' +
+                        '<h4 class="card-title mt-3">' + sort[i].app + '</h4>' +
+                        '<div class="meta">' +
+                        '<h6 style="color:#DF013A">' + sort[i].category + '</h6>' +
+                        '<h6 style="color:#FF8000">' + sort[i].contentRating + '</h6>' +
+                        '</div>' +
+                        '</div>' +
+                        '<hr style="margin-top:0px;">' +
+                        '<div class="row">' +
+                        '<span class="rating-static rating-' + sort[i].rating * 10 + '"></span>' +
+                        '<div class="type">' + sort[i].type + '</div>' +
+                        '</div>' +
+                        "<button type='button' class='btn btn-info' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='userrv(" + '"' + sort[i].app + '"' + "," + '"' + sort[i].category + '"' + "," + '"' + sort[i].contentRating + '"' + "," + '"' + sort[i].type + '"' + "," + '"' + sort[i].installs + '"' + "," + '"' + sort[i].androidVer + '"' + "," + '"' + sort[i].lastUpdated + '"' + "," + '"' + sort[i].rating + '"' + ")'>Detail</button>" +
+                        '<br>' +
+                        '</div>' +
+                        '</div>';
+                    
+    
+                } console.log(html);
+                document.getElementById('wrapper').innerHTML = html;
+                page()
+    
+    
+    
+    
+    
+            }
+        }
+        xhr.send();
+
+      }
